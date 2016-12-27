@@ -10,7 +10,9 @@ $(document).ready(function () {
     $("#PageTitle").hide();
     $("#DivRemoveEmployee").hide();
     $("#DivRemoveAdmin").hide();
-    
+    $("#CurrentAccountsSec").hide();
+    $("#RegAdmin").hide();
+    $("#RegEmp").hide();
     
    
     $("#RegSection").on("click", function () {
@@ -18,13 +20,24 @@ $(document).ready(function () {
         $("#RemoveSec").hide();
         $("#DashboardArrives").hide();
         $("#RegSec").show();
+        $("#CurrentAccountsSec").hide();
     }); 
+    
+    $("#CurrentAccounts").on("click", function () {
+        $("#LoginSec").hide();
+        $("#RemoveSec").hide();
+        $("#DashboardArrives").hide();
+        $("#RegSec").hide();
+        $("#CurrentAccountsSec").show();
+    }); 
+    
     
     $("#RmvSection").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").show();
         $("#DashboardArrives").hide();
         $("#RegSec").hide();
+        $("#CurrentAccountsSec").hide();
     });
     
     $("#SearchEmployee").on("click", function () {
@@ -32,6 +45,7 @@ $(document).ready(function () {
         $("#RemoveSec").hide();
         $("#DashboardArrives").show();
         $("#RegSec").hide();
+        $("#CurrentAccountsSec").hide();
     });
     
 /////////////////////////////////
@@ -75,7 +89,11 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////
 ///////////////// REGISTER ADMIN ////////////////// 
 /////////////////////////////////////////////////////
-
+$("#BtnAddEmployee").click(function() {
+    
+    $("#RegAdmin").hide();
+    $("#RegEmp").show();
+        
     $("#registerBtn").click(function () {
        
         var jsonData = {
@@ -104,6 +122,8 @@ $(document).ready(function () {
         });
         
     });
+    
+});
 /////////////////////////////////////////////////////////////
     
     
@@ -144,20 +164,96 @@ $(document).ready(function () {
             
         });
                                
+    }); 
+    /*
+    //validate ADMIN ksdhbfkshdbfjhsf
+    $("#validate2").click(function(){
+        
+        var jsonData = {
+            "mat": $("#RemoveAdmin").val(), 
+            "action": "validateAdmin"
+        };  
+        
+        alert(jsonData["mat"]);
+        alert(jsonData["action"]);
+               
+           $.ajax({
+               url: "data/applicationLayer.php", 
+               type: "POST", 
+               data: jsonData, 
+               success: function (jsonResponse) {     
+                    alert(jsonResponse.message+ "!");    
+                }, 
+               error: function (errorMessage) {
+                   //alert(errorMessage.responseText);
+                    alert("error! D:");
+                }
+            });    
+        
+        
+        
     });
-    
+*/
 //////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////
 ///////////////// DELETE ADMIN ////////////////// 
 /////////////////////////////////////////////////////
-    
     $("#BtnRmvAdmin").click(function(){
                                
         $("#DivRemoveAdmin").show();                   
         $("#DivRemoveEmployee").hide();
-                               
-    });
+        
+            $("#remove2").click(function(){
+
+              /*  var jsonData = {  //VALIDATE ADMIN PENDIENTE
+
+                "mat": $("#RemoveAdmin").val(), 
+                "action": "validateAdmin"
+
+                };
+                
+                alert("ajax!");
+                
+                $.ajax({
+                    url: "data/applicationLayer.php"
+                    , type: "POST"
+                    , data: jsonData
+                    , success: function (jsonResponse) {
+                        alert(jsonResponse.message+ "!");
+                    }
+                    , error: function (errorMessage) {
+                       alert(errorMessage.responseText);
+                       //alert("error! D:");
+                    }
+                });    
+                */
+                
+                var jsonData2 = {
+                        "mat": $("#RemoveAdmin").val(), 
+                        "action": "removeAdmin"
+
+                        };
+
+                        $.ajax({
+                            url: "data/applicationLayer.php"
+                            , type: "POST"
+                            , data: jsonData2
+                            , success: function (jsonResponse2) {
+                                alert(jsonResponse2.message+ "!");
+
+                                $("#DashboardArrives").show(); 
+                                $("#RemoveAdmin").val("");
+                                $("#RemoveSec").hide();
+
+
+                            }
+                            , error: function (errorMessage) {
+                                alert(errorMessage.responseText);
+                            }
+                        }); 
+            });
+});
     
 //////////////////////////////////////////////////
     
@@ -165,6 +261,11 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////
 ///////////////// REGISTER EMPLOYEE ////////////////// 
 /////////////////////////////////////////////////////
+
+  $("#BtnAddAdmin").click(function (){
+      
+    $("#RegAdmin").show();
+    $("#RegEmp").hide();
 
     $("#registerBtn2").click(function () {
        
@@ -194,8 +295,105 @@ $(document).ready(function () {
         });
         
     });
+      
+  });
 /////////////////////////////////////////////////////////////
         
+    
+/////////////////////////////////////////////////
+///////////////LOAD ADMINS //////////////////////
+/////////////////////////////////////////////////
+
+    $("#AdminList").click(function(){
+        
+        var jsonData = {
+            "action": "loadAdmins"
+            
+        };
+        
+        $.ajax({
+            url: "data/applicationLayer.php"
+            , type: "POST"
+            , data: jsonData
+            , success: function (jsonResponse) {
+                
+                var postUser = "";
+                 if (jsonResponse.length > 0){
+                        $.each(jsonResponse,function(index){
+                            postUser += "<li>" + jsonResponse[index].mat 
+                                        +": " +jsonResponse[index].fName 
+                                        + " " + jsonResponse[index].lName +
+                                        "</li>" + "<br>";   
+                        });
+                 } 
+                               
+                $("#registeredAdmins").empty();
+                $("#registeredAdmins").append(postUser);
+                
+                
+            }
+            , error: function (errorMessage) {
+                alert(errorMessage.responseText);
+            }
+        });
+      
+    });
+    
+/////////////////////////////////////////////////
+    
+    
+////////////////////////////////////////////////////
+///////////////LOAD EMPLOYEES //////////////////////
+////////////////////////////////////////////////////
+
+    $("#EmployeeList").click(function(){
+        
+        var jsonData = {
+            "action": "loadEmployees"
+            
+        };
+        
+        $.ajax({
+            url: "data/applicationLayer.php"
+            , type: "POST"
+            , data: jsonData
+            , success: function (jsonResponse) {
+                
+                var postUser = "";
+                 if (jsonResponse.length > 0){
+                        $.each(jsonResponse,function(index){
+                            postUser += "<li>" + jsonResponse[index].mat 
+                                        +": " +jsonResponse[index].fName 
+                                        + " " + jsonResponse[index].lName +
+                                        "</li>" + "<br>";   
+                        });
+                 } 
+                
+                $("#registeredEmployees").empty();
+                $("#registeredEmployees").append(postUser);
+                
+                
+            }
+            , error: function (errorMessage) {
+                alert(errorMessage.responseText);
+            }
+        });
+      
+    });
+    
+/////////////////////////////////////////////////    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
     
 /////////////////////////////////////////////////
 ///////////////LOGIN SECTION ////////////////////

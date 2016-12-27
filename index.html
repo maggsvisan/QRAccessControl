@@ -8,26 +8,24 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css" /> 
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 </head>
-
 <header>
     <div class="container" id="PageHeader">
-        <h1> QR Scanner Control Access </h1> 
-    </div>
-        <div class="container" id="PageTitle">
-        <h4 id="currentLogin"> Currently login as: </h4>
-        </div> 
+        <h1> QR Scanner Control Access </h1> </div>
+    <div class="container" id="PageTitle">
+        <h4 id="currentLogin"> Currently login as: </h4> </div>
 </header>
 <div class="container" id="menutoolbar">
     <ul>
         <li id="SearchEmployee"><a href="#page1"> Employees </a></li>
         <li id="RmvSection"><a href="#page3"> Remove Accounts </a></li>
-         <li id="RegSection"><a href="#page7"> Register Employee </a></li>
+        <li id="RegSection"><a href="#page7"> Register Employee </a></li>
+        <li id="CurrentAccounts"><a href="#page7"> Current Registers </a></li>
         <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
     </ul>
 </div>
@@ -45,121 +43,139 @@
             <tbody id="submitTable"></tbody>
         </table>
     </div>
-    
     <div id="LoginSec">
         <form id=loginForm>
             <div class="Matricula" align=center>
                 <p> ID Number (Employee: L0XXXXXXX)</p>
-                <input id="loginMat" type="string" value="">
-                </br>
+                <input id="loginMat" type="string" value=""> </br>
             </div>
             <div class="Password" align=center>
                 <p> Password </p>
-                <input id="loginPsswrd" type="password" value="">
-                </br>
+                <input id="loginPsswrd" type="password" value=""> </br>
             </div>
-    
             <div class="Remember" align=center>
                 <input id="logRemember" type="checkbox" name="Remember">Remember me? </div>
             <div align="center"> <span id="loginButton"> Login </span> </div>
-            <br>
-       </form>
+            <br> </form>
     </div>
-
 
     <div class="container" id="RegSec">
-        <div id="RegUser">
-        <h2> Register Admin </h2>
-        <div class="Fname">
-            <p> First name </p>
-            <input id="inFname" type="string" value="">
-            </br>
+        
+         <table class="table" id="DeleteRegistration">
+            <tr>
+                <caption>
+                    <h4> Select: </h4> 
+                </caption>
+            </tr>
+            <tr>
+                <th>
+                    <div> <span type="button" class="btn btn-info" id="BtnAddEmployee"> Add Employee </span> </div>
+                </th>
+                <th> <span type="button" class="btn btn-info" id="BtnAddAdmin"> Add Administrator </span> </th>
+            </tr>
+        </table>
+        
+        <div id="RegAdmin" >
+            <h4> Register Administrator </h4>
+            <div class="Fname">
+                <p> First name </p>
+                <input id="inFname" type="string" value=""> </br>
+            </div>
+            <div class="Lname">
+                <p> Last Name </p>
+                <input id="inLname" type="string" value=""> </br>
+            </div>
+            <div class="Password">
+                <p> Password </p>
+                <input id="inPassword" type="password" value=""> </br>
+            </div>
+            <div class="Matricula">
+                <p> ID Number (Employee: L0XXXXXXX) </p>
+                <input id="inMatricula" type="string" value=""> </br>
+            </div> 
+                </br>
+                <button type="button" class="btn btn-success" id="registerBtn">Register</button>    
         </div>
-        <div class="Lname">
-            <p> Last Name </p>
-            <input id="inLname" type="string" value="">
-            </br>
-        </div>
-        <div class="Password">
-            <p> Password </p>
-            <input id="inPassword" type="password" value="">
-            </br>
-        </div>
-        <div class="Matricula">
-            <p> ID Number (Employee: L0XXXXXXX)  </p>
-            <input id="inMatricula" type="string" value="">
-            </br>
-        </div> 
-        <span class="Register">
-            <p id="registerBtn" class="btn">Register</p>
-        </span>
-    </div>
-
+        
         <div id="RegEmp">
-        
-        <h2> Register Employee </h2>
-        <div class="Fname">
-            <p> First name </p>
-            <input id="inFname2" type="string" value="">
-            </br>
-        </div>
-        <div class="Lname">
-            <p> Last Name </p>
-            <input id="inLname2" type="string" value="">
-            </br>
-        </div>
-        <div class="Matricula">
-            <p> ID Number (Employee: L0XXXXXXX)  </p>
-            <input id="inMatricula2" type="string" value="">
-            </br>
-        </div> 
-        
-        <div class="Position">
-            <p> Employee position </p>
-            <input id="inPosition" type="string" value="">
-            </br>
-        </div> 
-        <span class="Register">
-            <p id="registerBtn2" class="btn">Register</p>
-        </span>
-        </div>
-
-
-
+            <h4> Register Employee </h4>
+            <div class="Fname">
+                <p> First name </p>
+                <input id="inFname2" type="string" value=""> </br>
+            </div>
+            <div class="Lname">
+                <p> Last Name </p>
+                <input id="inLname2" type="string" value=""> </br>
+            </div>
+            <div class="Matricula">
+                <p> ID Number (Employee: L0XXXXXXX) </p>
+                <input id="inMatricula2" type="string" value=""> </br>
+            </div>
+            <div class="Position">
+                <p> Employee position </p>
+                <input id="inPosition" type="string" value=""> 
+                </br>
+                </br>
+            </div> 
+                <button type="button" class="btn btn-success" id="registerBtn2">Register</button>  
+            </div>
     </div>
 
 
     <div class="container" id="RemoveSec">
         <table class="table" id="DeleteRegistration">
             <tr>
-                <caption><h2> Select: </h2> </caption>
+                <caption>
+                    <h4> Select: </h4> 
+                </caption>
             </tr>
-            
             <tr>
-                <th><div> <span class="btn"  id="BtnRmvEmployee"> Remove Employee </span> </div></th>
-                <th> <span class= "btn" id="BtnRmvAdmin"> Remove Admin </span> </th>
+                <th>
+                    <div> <span type="button" class="btn btn-info" id="BtnRmvEmployee"> Remove Employee </span> </div>
+                </th>
+                <th> <span type="button" class="btn btn-info" id="BtnRmvAdmin"> Remove Admin </span> </th>
             </tr>
         </table>
-        <div class= "container" id="DivRemoveEmployee">
+        <div class="container" id="DivRemoveEmployee">
             <p> Enter employee's ID number</p>
-            <input id="RemoveEmployee" type="text"></input>  
+            <input id="RemoveEmployee" type="text"></input>
             </br>
-            </br>
-            <span class="btn" id="remove1"> Remove </span>
-        </div>
+            </br> <span type="button" class="btn btn-danger" id="remove1"> Remove </span> </div>
         </br>
-        <div class= "container"  id="DivRemoveAdmin">
-            <p> Enter admin's ID number</p>
+        <div class="container" id="DivRemoveAdmin">
+            <p> Enter administrator's ID number</p>
             <input id="RemoveAdmin" type="text"></input>
             </br>
-            </br>
-            <span class="btn" id="remove2"> Remove </span>
-        </div>
-     </div>
+            </br> <span type="button" class="btn btn-danger" id="remove2"> Remove </span> <span class="btn" id="validate2"> Validate Admin </span> </div>
+    </div>
+
+    <div class="container" id="CurrentAccountsSec">
+        <table class="table table-striped">
+            <tr>
+                <caption> <h4>Select which account type you want to view </h4> </caption>
+            </tr>
+        <thead>
+          <tr>
+            <td><button type="button" class="btn btn-info" id="EmployeeList">View employees Registered</button>
+                </br>  
+                <ol id="registeredEmployees" class="UsersList"> Registered employees: </ol>
+            </td>
+            <td><button type="button" class="btn btn-info" id="AdminList">View administrators Registered</button>
+                 </br>  
+                <ol id="registeredAdmins" class="UsersList"> Registered administrators: </ol>
+            </td>
+          </tr>
+        </thead>
+    
+      </table>
+           
+    </div>
+
 
 
 
 </body>
-<script src="java.js"> </script>
+<script src="java.js">
+</script>
 
 </html>

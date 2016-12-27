@@ -20,10 +20,15 @@ switch ($action){
                     break; 
     case "registerEmp": registerEmp();
                     break;
-   /* case "valideEmployee": validateEmployee();
+   //case "valideEmployee": validateEmployee();
+     //               break;
+    //case "valideAdmin": validateAdmin();
+      //              break;
+    
+    case "loadEmployees": loadEmployees();
                     break;
-    case "valideAdmin": validateAdmin();
-                    break;*/
+    case "loadAdmins": loadAdmins();
+                    break;
     case "removeEmployee": removeEmployee();
                     break;
     case "removeAdmin":removeAdmin();
@@ -99,6 +104,57 @@ function removeEmployee (){
         die($result["status"]); //returns error from DataLayer
     }	
     
+}
+
+function validateAdmin(){
+    
+    echo $mat;
+    
+    $mat= $_POST["mat"];
+    
+   $result= attemptValidateAdmin($mat);
+    
+    
+    if ($result["status"] == "SUCCESS"){
+		$response = array("message"=> "Administrator exists");
+        echo json_encode($response); //sent it to presentation layer
+    }	
+    
+    else{
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]); //returns error from DataLayer
+    }	
+    
+}
+
+
+function removeAdmin(){
+    
+    $mat= $_POST["mat"];
+    
+    $result= attemptRemoveAdmin($mat);
+    
+    if ($result["status"] == "SUCCESS"){
+		$response = array("message"=> "Administrator deleted");
+        echo json_encode($response); //sent it to presentation layer
+    }	
+    
+    else{
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]); //returns error from DataLayer
+    }	
+    
+}
+
+
+function loadAdmins(){
+    $result= loadAdministrators();
+    echo json_encode($result);
+}
+
+function loadEmployees(){
+    $result= loadAllEmployees();
+    echo json_encode($result);
 }
 
 

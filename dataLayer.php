@@ -84,7 +84,6 @@ function attemptRemoveRegister ($mat){
 			
             $sql = "DELETE FROM Registers WHERE mat='$mat'";;
 		
-            echo $sql;
 			$result = $conn->query($sql);
 			
            if ($result != null) 
@@ -106,7 +105,7 @@ function attemptRemoveEmployee ($mat){
     $conn = connectionToDataBase();
 		if ($conn != null){
 			
-            $sql = "DELETE FROM Employee WHERE matricula='$mat'";;
+            $sql = "DELETE FROM Employee WHERE matricula='$mat'";
 		
 			$result = $conn->query($sql);
 			
@@ -124,6 +123,127 @@ function attemptRemoveEmployee ($mat){
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}    
 }
+
+
+function attemptValidateAdmin($mat){
+
+$conn = connectionToDataBase();
+
+    if ($conn != null){
+        
+        $sql="SELECT * FROM Admin WHERE matricula= '$mat'";
+        
+        if ($result->num_rows > 0)
+                    {
+                        $row = $result -> fetch_assoc();
+                        $conn -> close();
+                        return array("status" => "SUCCESS");
+                    }
+         else{
+                        $conn -> close();
+                        return array("status" => "Not a favorite");
+                    }
+
+    }
+    
+    else{
+        $conn -> close();
+        return array("status" => "CONNECTION WITH DB WENT WRONG");
+    }  
+
+}
+
+
+function attemptRemoveAdmin($mat){
+    
+$conn = connectionToDataBase();
+
+    if ($conn != null){
+
+        $sql = "DELETE FROM Admin WHERE matricula='$mat'";;	
+        $result = $conn->query($sql);
+
+            if ($result != null)	
+            {  
+                return array( "status" => "SUCCESS"); 
+            }
+
+            else{
+                return array("status" => "This administrator cannot be deleted");
+            }
+    }
+
+    else{
+        $conn -> close();
+        return array("status" => "CONNECTION WITH DB WENT WRONG");
+    }    
+
+}
+
+
+function loadAdministrators(){
+
+$conn = connectionToDataBase();
+    if ($conn != null){
+    
+    $sql = "SELECT * FROM Admin";
+    
+    // Run query and store resulting data
+    $result = $conn -> query($sql); 
+           
+        if ($result->num_rows > 0)
+        {    
+            $response = array();    
+            
+            while($row = $result -> fetch_assoc()) {
+                array_push($response, array("mat" => $row["matricula"], "fName" =>$row["fName"], "lName" => $row["lName"])); 
+            }
+            return ($response);
+        }
+        
+        else{
+             header("No administrators registered");
+        }
+            
+    }
+        else {
+            $conn -> close();
+            header('HTTP/1.1 500 Bad connection, something went wrong while saving your data, please try again later');
+     }
+}
+
+
+function loadAllEmployees(){
+
+$conn = connectionToDataBase();
+    if ($conn != null){
+    
+    $sql = "SELECT * FROM Employee";
+    
+    // Run query and store resulting data
+    $result = $conn -> query($sql); 
+           
+        if ($result->num_rows > 0)
+        {    
+            $response = array();    
+            
+            while($row = $result -> fetch_assoc()) {
+                array_push($response, array("mat" => $row["matricula"], "fName" =>$row["fName"], "lName" => $row["lName"])); 
+            }
+            return ($response);
+        }
+        
+        else{
+             header("No administrators registered");
+        }
+            
+    }
+        else {
+            $conn -> close();
+            header('HTTP/1.1 500 Bad connection, something went wrong while saving your data, please try again later');
+     }
+}
+
 
 function attemptLogin($mat){
 		$conn = connectionToDataBase();
