@@ -8,26 +8,33 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css" /> </head>
+    <link rel="stylesheet" type="text/css" href="styles.css" /> 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
 <header>
-    <div id="PageHeader">
-        <h1> QR Scanner Control Access </h1> </div>
-        <div id="PageTitle">
+    <div class="container" id="PageHeader">
+        <h1> QR Scanner Control Access </h1> 
+    </div>
+        <div class="container" id="PageTitle">
         <h4 id="currentLogin"> Currently login as: </h4>
         </div> 
 </header>
-<div id="menutoolbar">
+<div class="container" id="menutoolbar">
     <ul>
         <li id="SearchEmployee"><a href="#page1"> Employees </a></li>
-        <li id="RegSection"><a href="#page2"> Registration </a></li>
         <li id="RmvSection"><a href="#page3"> Remove Accounts </a></li>
+         <li id="RegSection"><a href="#page7"> Register Employee </a></li>
         <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
-        
     </ul>
 </div>
 
 <body>
-    <div id="DashboardArrives">
+    <div id="DashboardArrives" class="container">
+        </br>
         <table id="dashbord">
             <tr>
                 <th> Employee</th>
@@ -60,9 +67,9 @@
     </div>
 
 
-    <div id="RegSec">
+    <div class="container" id="RegSec">
         <div id="RegUser">
-        <h2> Registration </h2>
+        <h2> Register Admin </h2>
         <div class="Fname">
             <p> First name </p>
             <input id="inFname" type="string" value="">
@@ -87,11 +94,43 @@
             <p id="registerBtn" class="btn">Register</p>
         </span>
     </div>
+
+        <div id="RegEmp">
+        
+        <h2> Register Employee </h2>
+        <div class="Fname">
+            <p> First name </p>
+            <input id="inFname2" type="string" value="">
+            </br>
+        </div>
+        <div class="Lname">
+            <p> Last Name </p>
+            <input id="inLname2" type="string" value="">
+            </br>
+        </div>
+        <div class="Matricula">
+            <p> ID Number (Employee: L0XXXXXXX)  </p>
+            <input id="inMatricula2" type="string" value="">
+            </br>
+        </div> 
+        
+        <div class="Position">
+            <p> Employee position </p>
+            <input id="inPosition" type="string" value="">
+            </br>
+        </div> 
+        <span class="Register">
+            <p id="registerBtn2" class="btn">Register</p>
+        </span>
+        </div>
+
+
+
     </div>
 
 
-    <div id="RemoveSec">
-        <table id="DeleteRegistration">
+    <div class="container" id="RemoveSec">
+        <table class="table" id="DeleteRegistration">
             <tr>
                 <caption><h2> Select: </h2> </caption>
             </tr>
@@ -101,7 +140,23 @@
                 <th> <span class= "btn" id="BtnRmvAdmin"> Remove Admin </span> </th>
             </tr>
         </table>
+        <div class= "container" id="DivRemoveEmployee">
+            <p> Enter employee's ID number</p>
+            <input id="RemoveEmployee" type="text"></input>  
+            </br>
+            </br>
+            <span class="btn" id="remove1"> Remove </span>
+        </div>
+        </br>
+        <div class= "container"  id="DivRemoveAdmin">
+            <p> Enter admin's ID number</p>
+            <input id="RemoveAdmin" type="text"></input>
+            </br>
+            </br>
+            <span class="btn" id="remove2"> Remove </span>
+        </div>
      </div>
+
 
 
 </body>

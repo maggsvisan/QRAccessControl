@@ -1,10 +1,7 @@
-
 <?php
 header('Content-type: application/json');
 require_once __DIR__ . '/dataLayer.php';
 $action = $_POST["action"];
-
-
 switch ($action){
     
     case "login": loginFunction();
@@ -20,25 +17,24 @@ switch ($action){
     case "verifySession": verifySession();
                     break;
     case "deleteSession": deleteSession();
+                    break; 
+    case "registerEmp": registerEmp();
                     break;
-    case "register": registerFunction();
-                    break;
-    case "valideEmployee": validateEmployee();
+   /* case "valideEmployee": validateEmployee();
                     break;
     case "valideAdmin": validateAdmin();
-                    break;
+                    break;*/
     case "removeEmployee": removeEmployee();
                     break;
     case "removeAdmin":removeAdmin();
                     break;
-    case "loadAllEmployees": loadAllEmployees();
+    /*case "loadAllEmployees": loadAllEmployees();
                     break;
     case "loadAllAdmin": loadAllAdmin();
-                    break;      
+                    break;      */
 }
 
-
-function registerFunction(){ 
+function registerFunction(){ //registers an admin 
     $fName = $_POST["fName"];
     $lName= $_POST["lName"];
     $passwrd = $_POST["password"];
@@ -59,14 +55,58 @@ function registerFunction(){
     }	       
 }
 
+function registerEmp(){ //register employee
+    
+    $fName = $_POST["fName"];
+    $lName= $_POST["lName"];
+    $position = $_POST["position"];
+    $mat= $_POST["mat"];
+    
+    $result= attemptRegisterEmployee($fName, $lName, $mat, $position);
+    
+    if ($result["status"] == "SUCCESS"){
+		 $response = array("message"=> "New employee registered");
+         echo json_encode($response); //sent it to presentation layer
+    }	
+    
+    else{
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]); //returns error from DataLayer
+    }	       
+       
+}
+
+function removeEmployee (){
+    
+    $mat= $_POST["mat"];
+    
+    $result= attemptRemoveRegister($mat);
+    
+    if ($result["status"] == "SUCCESS"){
+		// $response = array("message"=> "Registers deleted");
+        // echo json_encode($response); //sent it to presentation layer
+        
+         $result2= attemptRemoveEmployee($mat);
+        
+            if($result2["status"]=="SUCCESS"){
+                $response2= array("message"=> "Employee deleted successfully");
+                echo json_encode($response2);
+            }
+    }	
+    
+    else{
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]); //returns error from DataLayer
+    }	
+    
+}
+
 
 function createCookie(){
     
     $cookieName = $_POST["CookieName"];
 	$cookieValue = $_POST["CookieValue"];
-
 	setcookie($cookieName, $cookieValue, time() + (86400 * 20), "/"); // 86400 = 1 day
-
   if (isset($_COOKIE[$cookieName])) {
     echo json_encode("Cookie $cookieName created");
     } 
@@ -76,7 +116,6 @@ function createCookie(){
   }
     
 }
-
 function retrieveCookie(){
     
     if (isset($_COOKIE['matID'])) //this checks if a cookie is set or not
@@ -91,12 +130,9 @@ function retrieveCookie(){
 	}
     
 }
-
-
 function loginFunction(){
 	$mat = $_POST["matricula"];
 	$userPassword = $_POST["password"];
-
 	$result = attemptLogin($mat);  
     
 	if ($result["status"] == "SUCCESS"){
@@ -125,8 +161,6 @@ function loginFunction(){
 		die($result["status"]);
 	}	
 }
-
-
 function verifySession(){
     
     // Start session
@@ -143,8 +177,6 @@ function verifySession(){
     }
     
 }
-
-
 function deleteSession(){
     
 	session_start();
@@ -162,11 +194,7 @@ function deleteSession(){
 	}
     
 }
-
-
-
 /////////////////////// Encryption and Decryption //////////////////////////////
-
 #Action to decrypt the password of the user
 	function decryptPassword($password)
 	{
@@ -177,13 +205,11 @@ function deleteSession(){
 	    $ciphertext_dec = base64_decode($password);
 	    $iv_dec = substr($ciphertext_dec, 0, $iv_size);
 	    $ciphertext_dec = substr($ciphertext_dec, $iv_size);
-
 	    $password = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
 	   	
 	   	
 	   	$count = 0;
 	   	$length = strlen($password);
-
 	    for ($i = $length - 1; $i >= 0; $i --)
 	    {
 	    	if (ord($password{$i}) === 0)
@@ -191,24 +217,17 @@ function deleteSession(){
 	    		$count ++;
 	    	}
 	    }
-
 	    $password = substr($password, 0,  $length - $count); 
-
 	    return $password;
 	}
-
-
-
 	# Action to encrypt the password of the user
 	function encryptPassword()
 	{
         $userPassword= $_POST["password"];
-
 	    $key = pack('H*', "bcb04b7e103a05afe34763051cef08bc55abe029fdebae5e1d417e2ffb2a00a3");
 	    $key_size =  strlen($key);
 	    
 	    $plaintext = $userPassword;
-
 	    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
 	    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
 	    
@@ -216,35 +235,7 @@ function deleteSession(){
 	    $ciphertext = $iv . $ciphertext;
 	    
 	    $userPassword = base64_encode($ciphertext);
-
 	    return $userPassword;
 	}
-
 ///////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

@@ -8,6 +8,8 @@ $(document).ready(function () {
     $("#loginButton").show();
     $("#logoutButton").hide();
     $("#PageTitle").hide();
+    $("#DivRemoveEmployee").hide();
+    $("#DivRemoveAdmin").hide();
     
     
    
@@ -16,6 +18,20 @@ $(document).ready(function () {
         $("#RemoveSec").hide();
         $("#DashboardArrives").hide();
         $("#RegSec").show();
+    }); 
+    
+    $("#RmvSection").on("click", function () {
+        $("#LoginSec").hide();
+        $("#RemoveSec").show();
+        $("#DashboardArrives").hide();
+        $("#RegSec").hide();
+    });
+    
+    $("#SearchEmployee").on("click", function () {
+        $("#LoginSec").hide();
+        $("#RemoveSec").hide();
+        $("#DashboardArrives").show();
+        $("#RegSec").hide();
     });
     
 /////////////////////////////////
@@ -30,17 +46,21 @@ $(document).ready(function () {
         success: function(jsonResponse){
           if(jsonResponse.state === "true"){
             $("#currentLogin").empty();
-            $("#currentLogin").append("Welcome, ");
+            $("#currentLogin").append("Welcome,");
             $("#currentLogin").append(jsonResponse.mat);
             $("#currentLogin").show();
             $("#loginButton").hide();
             $("#logoutButton").show();
             $("#menutoolbar").show();
+            $("#LoginSec").hide();
+            $("#DashboardArrives").show();
+            
           }
           else{
             $("#currentLogin").hide();
             $("#loginButton").show();
             $("#logoutButton").hide();
+            
           }
         },
         error: function(errorMessage){
@@ -53,7 +73,7 @@ $(document).ready(function () {
 
     
 /////////////////////////////////////////////////////
-///////////////// REGISTER USER ////////////////// 
+///////////////// REGISTER ADMIN ////////////////// 
 /////////////////////////////////////////////////////
 
     $("#registerBtn").click(function () {
@@ -64,6 +84,96 @@ $(document).ready(function () {
             "password": $("#inPassword").val(), 
             "mat": $("#inMatricula").val(), 
             "action": "register"
+            
+        };
+        
+        $.ajax({
+            url: "data/applicationLayer.php"
+            , type: "POST"
+            , data: jsonData
+            , success: function (jsonResponse) {
+                alert(jsonResponse.message+ "!");
+                $("#RegSec").hide(); 
+                $("#LoginSec").show(); 
+                
+                
+            }
+            , error: function (errorMessage) {
+                alert(errorMessage.responseText);
+            }
+        });
+        
+    });
+/////////////////////////////////////////////////////////////
+    
+    
+/////////////////////////////////////////////////////
+///////////////// DELETE EMPLOYEE ////////////////// 
+/////////////////////////////////////////////////////
+    
+ $("#BtnRmvEmployee").click(function(){
+                               
+        $("#DivRemoveEmployee").show();
+        $("#DivRemoveAdmin").hide();    
+        
+        $("#remove1").click(function(){
+            
+            var jsonData = {
+            
+            "mat": $("#RemoveEmployee").val(), 
+            "action": "removeEmployee"
+            
+            };
+
+            $.ajax({
+                url: "data/applicationLayer.php"
+                , type: "POST"
+                , data: jsonData
+                , success: function (jsonResponse) {
+                    alert(jsonResponse.message+ "!");
+
+                    $("#DashboardArrives").show(); 
+                    $("#RemoveEmployee").val("");
+
+
+                }
+                , error: function (errorMessage) {
+                    alert(errorMessage.responseText);
+                }
+            });     
+            
+        });
+                               
+    });
+    
+//////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////
+///////////////// DELETE ADMIN ////////////////// 
+/////////////////////////////////////////////////////
+    
+    $("#BtnRmvAdmin").click(function(){
+                               
+        $("#DivRemoveAdmin").show();                   
+        $("#DivRemoveEmployee").hide();
+                               
+    });
+    
+//////////////////////////////////////////////////
+    
+    
+/////////////////////////////////////////////////////
+///////////////// REGISTER EMPLOYEE ////////////////// 
+/////////////////////////////////////////////////////
+
+    $("#registerBtn2").click(function () {
+       
+        var jsonData = {
+            "fName": $("#inFname2").val(), 
+            "lName": $("#inLname2").val(), 
+            "mat": $("#inMatricula2").val(), 
+            "position": $("#inPosition").val(), 
+            "action": "registerEmp"
             
         };
         
@@ -106,7 +216,7 @@ $("#loginButton").click(function () { //Session begins
         contentType: "application/x-www-form-urlencoded", 
         success: function (jsonResponse) {
                 
-            alert("Welcome back " + jsonResponse.fName + " " + jsonResponse.lName);
+            alert("Welcome back " + jsonResponse.fName + "" + jsonResponse.lName);
             var newHTMLContent = "";
                 
             newHTMLContent = jsonResponse.mat;
