@@ -125,13 +125,15 @@ function attemptRemoveEmployee ($mat){
 }
 
 
-function attemptValidateAdmin($mat){
-
+function attemptValidateAdmin($matricula){
+    
 $conn = connectionToDataBase();
 
     if ($conn != null){
         
-        $sql="SELECT * FROM Admin WHERE matricula= '$mat'";
+        $sql="SELECT * FROM Admin WHERE matricula= '$matricula'";
+        
+        $result = $conn -> query($sql); 
         
         if ($result->num_rows > 0)
                     {
@@ -141,7 +143,7 @@ $conn = connectionToDataBase();
                     }
          else{
                         $conn -> close();
-                        return array("status" => "Not a favorite");
+                        return array("status" => "Admin not found");
                     }
 
     }
@@ -252,7 +254,8 @@ function attemptLogin($mat){
             $sql = "SELECT fName, lName, matricula, passwrd FROM Admin WHERE matricula = '$mat'";
 		
 			$result = $conn->query($sql);
-			if ($result->num_rows > 0)
+			
+            if ($result->num_rows > 0)
 			{
                 $row = $result -> fetch_assoc();
 				$conn -> close();
@@ -269,6 +272,9 @@ function attemptLogin($mat){
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
 	}
+
+
+
 function attemptCreateSession($mat, $userPassword){
     
     $conn = connectionToDataBase();

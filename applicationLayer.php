@@ -18,12 +18,12 @@ switch ($action){
                     break;
     case "deleteSession": deleteSession();
                     break; 
-    case "registerEmp": registerEmp();
+    case "registerEmp": registerEmployee();
                     break;
    //case "valideEmployee": validateEmployee();
      //               break;
     //case "valideAdmin": validateAdmin();
-      //              break;
+      //            break;
     
     case "loadEmployees": loadEmployees();
                     break;
@@ -60,7 +60,7 @@ function registerFunction(){ //registers an admin
     }	       
 }
 
-function registerEmp(){ //register employee
+function registerEmployee(){ //register employee
     
     $fName = $_POST["fName"];
     $lName= $_POST["lName"];
@@ -105,28 +105,19 @@ function removeEmployee (){
     }	
     
 }
-
+/*
 function validateAdmin(){
     
-    echo $mat;
+    $matricula= $_POST["mat"];
     
-    $mat= $_POST["mat"];
-    
-   $result= attemptValidateAdmin($mat);
-    
-    
-    if ($result["status"] == "SUCCESS"){
-		$response = array("message"=> "Administrator exists");
-        echo json_encode($response); //sent it to presentation layer
-    }	
-    
-    else{
-        header('HTTP/1.1 500' . $result["status"]);
-        die($result["status"]); //returns error from DataLayer
-    }	
+    debug_to_console( $matricula );
+
+    $result= attemptValidateAdmin($matricula);
+
+    echo json_encode($result["status"]);
     
 }
-
+*/
 
 function removeAdmin(){
     

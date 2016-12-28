@@ -89,38 +89,51 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////
 ///////////////// REGISTER ADMIN ////////////////// 
 /////////////////////////////////////////////////////
-$("#BtnAddEmployee").click(function() {
+$("#BtnAddAdmin").click(function() {
     
-    $("#RegAdmin").hide();
-    $("#RegEmp").show();
+    $("#RegAdmin").show();
+    $("#RegEmp").hide();
         
     $("#registerBtn").click(function () {
        
-        var jsonData = {
-            "fName": $("#inFname").val(), 
-            "lName": $("#inLname").val(), 
-            "password": $("#inPassword").val(), 
-            "mat": $("#inMatricula").val(), 
-            "action": "register"
+        if ($("#inFname").val()==("") || $("#inLname").val()==("") || $("#inMatricula").val()== ("") ||   $("#inPassword").val() == (""))
+        {
+            alert("Fill all the blanks, please");
+            $("#inFname").val("");
+            $("#inLname").val("");
+            $("#inPassword").val("");
+            $("#inMatricula").val("");
             
-        };
+        }
         
-        $.ajax({
-            url: "data/applicationLayer.php"
-            , type: "POST"
-            , data: jsonData
-            , success: function (jsonResponse) {
-                alert(jsonResponse.message+ "!");
-                $("#RegSec").hide(); 
-                $("#LoginSec").show(); 
-                
-                
-            }
-            , error: function (errorMessage) {
-                alert(errorMessage.responseText);
-            }
-        });
         
+        else{
+            var jsonData = {
+                "fName": $("#inFname").val(), 
+                "lName": $("#inLname").val(), 
+                "password": $("#inPassword").val(), 
+                "mat": $("#inMatricula").val(), 
+                "action": "register"
+
+            };
+
+            $.ajax({
+                url: "data/applicationLayer.php"
+                , type: "POST"
+                , data: jsonData
+                , dataType: 'json'
+                , success: function (jsonResponse) {
+                    alert(jsonResponse.message+ "!");
+                    $("#RegSec").hide(); 
+                    $("#LoginSec").show(); 
+
+
+                }
+                , error: function (errorMessage) {
+                    alert(errorMessage.responseText);
+                }
+            });
+        }
     });
     
 });
@@ -149,6 +162,7 @@ $("#BtnAddEmployee").click(function() {
                 url: "data/applicationLayer.php"
                 , type: "POST"
                 , data: jsonData
+                , dataType: 'json'
                 , success: function (jsonResponse) {
                     alert(jsonResponse.message+ "!");
 
@@ -165,35 +179,33 @@ $("#BtnAddEmployee").click(function() {
         });
                                
     }); 
-    /*
-    //validate ADMIN ksdhbfkshdbfjhsf
-    $("#validate2").click(function(){
+    
+//validate ADMIN ksdhbfkshdbfjhsf
+$("#validate2").click(function(){
         
         var jsonData = {
             "mat": $("#RemoveAdmin").val(), 
             "action": "validateAdmin"
         };  
-        
-        alert(jsonData["mat"]);
-        alert(jsonData["action"]);
-               
+            console.log(jsonData);    
            $.ajax({
                url: "data/applicationLayer.php", 
                type: "POST", 
                data: jsonData, 
+               dataType: 'json',
                success: function (jsonResponse) {     
-                    alert(jsonResponse.message+ "!");    
+                    alert(jsonResponse.status+ "!"); 
+                    console.log(jsonResponse)
                 }, 
                error: function (errorMessage) {
-                   //alert(errorMessage.responseText);
-                    alert("error! D:");
+                   alert(errorMessage.responseText);
                 }
             });    
         
         
         
     });
-*/
+
 //////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////
@@ -262,37 +274,51 @@ $("#BtnAddEmployee").click(function() {
 ///////////////// REGISTER EMPLOYEE ////////////////// 
 /////////////////////////////////////////////////////
 
-  $("#BtnAddAdmin").click(function (){
+  $("#BtnAddEmployee").click(function (){
       
-    $("#RegAdmin").show();
-    $("#RegEmp").hide();
+    $("#RegAdmin").hide();
+    $("#RegEmp").show();
 
     $("#registerBtn2").click(function () {
        
-        var jsonData = {
-            "fName": $("#inFname2").val(), 
-            "lName": $("#inLname2").val(), 
-            "mat": $("#inMatricula2").val(), 
-            "position": $("#inPosition").val(), 
-            "action": "registerEmp"
-            
-        };
         
-        $.ajax({
-            url: "data/applicationLayer.php"
-            , type: "POST"
-            , data: jsonData
-            , success: function (jsonResponse) {
-                alert(jsonResponse.message + "!");
-                $("#RegSec").hide(); 
-                $("#LoginSec").show(); 
-                
-                
-            }
-            , error: function (errorMessage) {
-                alert(errorMessage.responseText);
-            }
-        });
+        if ($("#inFname2").val()==("") || $("#inLname2").val()==("") || $("#inMatricula2").val()== ("") ||   $("#inPosition").val() == (""))
+        {
+            alert("Fill all the blanks, please");
+            $("#inFname2").val("");
+            $("#inLname2").val("");
+            $("#inMatricula2").val("");
+            $("#inPosition").val("");
+            
+        }
+        
+        
+        else {
+            var jsonData = {
+                "fName": $("#inFname2").val(), 
+                "lName": $("#inLname2").val(), 
+                "mat": $("#inMatricula2").val(), 
+                "position": $("#inPosition").val(), 
+                "action": "registerEmp"
+
+            };
+
+            $.ajax({
+                url: "data/applicationLayer.php"
+                , type: "POST"
+                , data: jsonData
+                , success: function (jsonResponse) {
+                    alert(jsonResponse.message + "!");
+                    $("#RegSec").hide(); 
+                    $("#LoginSec").show(); 
+
+
+                }
+                , error: function (errorMessage) {
+                    alert(errorMessage.responseText);
+                }
+            });
+        }
         
     });
       
