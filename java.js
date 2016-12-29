@@ -60,7 +60,7 @@ $(document).ready(function () {
         success: function(jsonResponse){
           if(jsonResponse.state === "true"){
             $("#currentLogin").empty();
-            $("#currentLogin").append("Welcome,");
+            $("#currentLogin").append("Login as: ");
             $("#currentLogin").append(jsonResponse.mat);
             $("#currentLogin").show();
             $("#loginButton").hide();
@@ -74,6 +74,7 @@ $(document).ready(function () {
             $("#currentLogin").hide();
             $("#loginButton").show();
             $("#logoutButton").hide();
+              
             
           }
         },

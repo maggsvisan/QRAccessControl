@@ -21,14 +21,39 @@ li a {
 
 li a:hover {
     background-color: gray;
+    color: white;
+}
+
+li a {
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 .table td,th {
    text-align: center;   
 }
 
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+padding-top: 24px;
+  
+}
 
+#PageTitle {
+    padding: 50px;
+}
 
+#LoginSec{
+    padding: 70px;
+    
+}
+/*
+#loginA a {
+    padding-right:100px;
+    color: white;
+}
+*/
 
 #loginButton{
   -moz-box-shadow:inset 0px 1px 0px 0px #caefab;

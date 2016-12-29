@@ -14,24 +14,38 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 </head>
-<header>
-    <div class="container" id="PageHeader">
-        <h1> QR Scanner Control Access </h1> </div>
-    <div class="container" id="PageTitle">
-        <h4 id="currentLogin"> Currently login as: </h4> </div>
-</header>
-<div class="container" id="menutoolbar">
-    <ul>
-        <li id="SearchEmployee"><a href="#page1"> Employees </a></li>
-        <li id="RmvSection"><a href="#page3"> Remove Accounts </a></li>
-        <li id="RegSection"><a href="#page7"> Register Employee </a></li>
-        <li id="CurrentAccounts"><a href="#page7"> Current Registers </a></li>
-        <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
-    </ul>
-</div>
 
+    
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navBarID">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">QR Access Control</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="container-fluid" id="menutoolbar">
+                <ul class="nav navbar-nav" >                    
+                    <li class="active" id="SearchEmployee"><a href="#page1"> Employees </a></li>
+                    <li id="RmvSection"><a href="#page3"> Remove Accounts </a></li>
+                    <li id="RegSection"><a href="#page7"> Register Employee </a></li>
+                    <li id="CurrentAccounts"><a href="#page7"> Current Registers </a></li>
+                    <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="logoutButton" align="right" style="display:block">
+                        <a id="currentLogin"> Currently login as:  </a>
+                    </li>  
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    
 <body>
-    <div id="DashboardArrives" class="container">
+    <div id="DashboardArrives" class="container-fluid">
         </br>
         <h2 class="sub-header"> Dashboard: Arrival and Departs of employees</h2>
         <div class="table-responsive" >
@@ -84,7 +98,7 @@
             <h4> Register Administrator </h4>
             <div class="Fname">
                 <p> First name </p>
-                <input id="inFname" type="string" value=""> </br>
+                <input id="inFname" type="string" value="" > </br>
             </div>
             <div class="Lname">
                 <p> Last Name </p>
@@ -95,7 +109,7 @@
                 <input id="inPassword" type="password" value=""> </br>
             </div>
             <div class="Matricula">
-                <p> ID Number (Employee: L0XXXXXXX) </p>
+                <p> ID Number (E    mployee: L0XXXXXXX) </p>
                 <input id="inMatricula" type="string" value=""> </br>
             </div> 
                 </br>
