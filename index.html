@@ -28,9 +28,9 @@
             <div class="container-fluid" id="menutoolbar">
                 <ul class="nav navbar-nav" >                    
                     <li class="active" id="SearchEmployee"><a href="#page1"> Dashboard </a></li>
-                    <li id="RmvSection"><a href="#page3"> Remove Accounts </a></li>
-                    <li id="RegSection"><a href="#page7"> Register Employee </a></li>
-                    <li id="CurrentAccounts"><a href="#page7"> Current Registers </a></li>
+                    <li id="RmvSection"><a href="#page2"> Remove Accounts </a></li>
+                    <li id="RegSection"><a href="#page3"> Register Employee </a></li>
+                    <li id="CurrentAccounts"><a href="#page4"> Current Registers </a></li>
                     <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>                   
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-<!-- Login section with style 
+<!-- Login section with style -->
     
 <div id="LoginSec" class="container">
         <div class="row" style="margin-top:20px">
@@ -80,13 +80,21 @@
                         <input id="loginPsswrd" type="password" value="" class="form-control input-lg" placeholder="Password">
                     </div>
                     <span>
-                        <input id="logRemember" type="checkbox" name="Remember">Remember me? 
-                        <a href="" class="btn btn-link pull-right">Forgot Password?</a>
+                      <!--  <input id="logRemember" type="checkbox" name="Remember">Remember me?  -->
+                     <span class="button-checkbox">
+                            <button type="button" class="btn" data-color="info">Remember Me</button>
+                            <input id="logRemember" type="checkbox" name="Remember" checked="checked" class="hidden">
+                            <a href="" class="btn btn-link pull-right">Forgot Password?</a>
+				    </span>
+                        <!-- <a href="" class="btn btn-link pull-right">Forgot Password?</a>  -->
+                        
+                        
                     </span>
                     <hr class="colorgraph">
                     <div class="row">
-                        <div class="col-xs-8 col-sm-8 col-md-8">
-                            <input type="submit" class="btn btn-lg btn-success btn-block" id="loginButton" value="Sign In">
+                        <div class="col-xs-6 col-sm-6 col-md-6" id="buttonHolder">
+                            <span class="btn btn-lg btn-success btn-block" id="loginButton" value="Sign In" > Login </span>
+                            <!-- <div align="center"> <span id="loginButton"> Login </span> </div> -->
                         </div>
                     </div>
                 </fieldset>
@@ -95,28 +103,6 @@
         </div>
     </div>
 </div>    
--->
-    
-
-<!-- Section no style -->
-<div id="LoginSec">
-        <form id=loginForm>
-            <div class="Matricula" align=center>
-                <p> ID Number (Employee: L0XXXXXXX)</p>
-                <input id="loginMat" type="string" value=""> </br>
-            </div>
-            <div class="Password" align=center>
-                <p> Password </p>
-                <input id="loginPsswrd" type="password" value=""> </br>
-            </div>
-            <div class="Remember" align=center>
-                <input id="logRemember" type="checkbox" name="Remember">Remember me? 
-            </div>
-            <div align="center"> <span id="loginButton"> Login </span> </div>
-            <br> </form>
-    </div>
-
-    
     
     <div class="container" id="RegSec">
         
@@ -149,7 +135,7 @@
                 <input id="inPassword" type="password" value=""> </br>
             </div>
             <div class="Matricula">
-                <p> ID Number (E    mployee: L0XXXXXXX) </p>
+                <p> ID Number (Employee: L0XXXXXXX) </p>
                 <input id="inMatricula" type="string" value=""> </br>
             </div> 
                 </br>
@@ -205,7 +191,10 @@
             <p> Enter administrator's ID number</p>
             <input id="RemoveAdmin" type="text">
             </br>
-            </br> <span type="button" class="btn btn-danger" id="remove2"> Remove </span> <span class="btn" id="validate2"> Validate Admin </span> </div>
+            </br> 
+                <span type="button" class="btn btn-danger" id="remove2"> Remove </span> 
+                <span id="validate2" class="btn btn-danger" > Validate Admin </span>
+        </div>
     </div>
 
     <div class="container" id="CurrentAccountsSec">

@@ -1,6 +1,79 @@
 $(document).ready(function () {
     
-    $("#LoginSec").show();
+    
+/* checkbox nuevo de remember */
+
+
+    
+        $('.button-checkbox').each(function(){
+		var $widget = $(this),
+			$button = $widget.find('button'),
+			$checkbox = $widget.find('input:checkbox'),
+			color = $button.data('color'),
+			settings = {
+					on: {
+						icon: 'glyphicon glyphicon-check'
+					},
+					off: {
+						icon: 'glyphicon glyphicon-unchecked'
+					}
+			};
+
+		$button.on('click', function () {
+			$checkbox.prop('checked', !$checkbox.is(':checked'));
+			$checkbox.triggerHandler('change');
+			updateDisplay();
+		});
+
+		$checkbox.on('change', function () {
+			updateDisplay();
+		});
+
+		function updateDisplay() {
+			var isChecked = $checkbox.is(':checked');
+			// Set the button's state
+			$button.data('state', (isChecked) ? "on" : "off");
+
+			// Set the button's icon
+			$button.find('.state-icon')
+				.removeClass()
+				.addClass('state-icon ' + settings[$button.data('state')].icon);
+
+			// Update the button's color
+			if (isChecked) {
+				$button
+					.removeClass('btn-default')
+					.addClass('btn-' + color + ' active');
+			}
+			else
+			{
+				$button
+					.removeClass('btn-' + color + ' active')
+					.addClass('btn-default');
+			}
+		}
+		function init() {
+			updateDisplay();
+			// Inject the icon if applicable
+			if ($button.find('.state-icon').length == 0) {
+				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+			}
+		}
+		init();
+	});
+    
+    
+    
+    
+    
+    
+    
+//////fin del java nuevo///////////
+    
+    
+    
+    
+    $("#LoginSec").hide();
     $("#RemoveSec").hide();
     $("#menutoolbar").hide();
     $("#DashboardArrives").hide();
@@ -74,6 +147,7 @@ $(document).ready(function () {
             $("#currentLogin").hide();
             $("#loginButton").show();
             $("#logoutButton").hide();
+            $("#LoginSec").show();
               
             
           }
@@ -91,6 +165,7 @@ $(document).ready(function () {
 ///////////////// REGISTER ADMIN ////////////////// 
 /////////////////////////////////////////////////////
 $("#BtnAddAdmin").click(function() {
+    event.preventDefault();
     
     $("#RegAdmin").show();
     $("#RegEmp").hide();
@@ -277,6 +352,8 @@ $("#validate2").click(function(){
 
   $("#BtnAddEmployee").click(function (){
       
+    event.preventDefault();
+      
     $("#RegAdmin").hide();
     $("#RegEmp").show();
 
@@ -411,17 +488,6 @@ $("#validate2").click(function(){
 /////////////////////////////////////////////////    
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
 /////////////////////////////////////////////////
 ///////////////LOGIN SECTION ////////////////////
 /////////////////////////////////////////////////
@@ -432,6 +498,9 @@ $("#loginButton").click(function () { //Session begins
         "matricula": $("#loginMat").val(), 
         "password": $("#loginPsswrd").val()
     };
+    
+  //console.log(jsonData["matricula"]);
+  //console.log(jsonData["password"]);
        
     $.ajax({
         url: "data/applicationLayer.php", 
@@ -441,7 +510,7 @@ $("#loginButton").click(function () { //Session begins
         contentType: "application/x-www-form-urlencoded", 
         success: function (jsonResponse) {
                 
-            alert("Welcome back " + jsonResponse.fName + "" + jsonResponse.lName);
+            alert("Welcome back " + jsonResponse.fName + " " + jsonResponse.lName);
             var newHTMLContent = "";
                 
             newHTMLContent = jsonResponse.mat;

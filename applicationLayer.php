@@ -153,8 +153,11 @@ function createCookie(){
     
     $cookieName = $_POST["CookieName"];
 	$cookieValue = $_POST["CookieValue"];
+    
+    
 	setcookie($cookieName, $cookieValue, time() + (86400 * 20), "/"); // 86400 = 1 day
-  if (isset($_COOKIE[$cookieName])) {
+ 
+    if (isset($_COOKIE[$cookieName])) {
     echo json_encode("Cookie $cookieName created");
     } 
     
@@ -180,7 +183,8 @@ function retrieveCookie(){
 function loginFunction(){
 	$mat = $_POST["matricula"];
 	$userPassword = $_POST["password"];
-	$result = attemptLogin($mat);  
+	$result = attemptLogin($mat);
+    
     
 	if ($result["status"] == "SUCCESS"){
 		
@@ -218,8 +222,7 @@ function verifySession(){
         echo json_encode($response);
     }
     else {
-    	$response = array("mat"=>$_SESSION['matricula'], "password"=> $_SESSION['password'], "state"  =>"true");
-        
+    	$response = array("mat"=>$_SESSION['matricula'], "password"=> $_SESSION['password'], "state"  =>"true");        
     	echo json_encode($response);
     }
     

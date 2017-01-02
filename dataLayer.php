@@ -22,7 +22,6 @@ function attemptRegistration($fName, $lName, $mat, $userPassword){
     $sql = "INSERT INTO Admin (fName,lName, matricula, passwrd) 
             VALUES ('$fName','$lName','$mat','$userPassword')";
     
-    echo $sql;
     // Run query and store resulting data
     $result = $conn->query($sql);
         
@@ -33,7 +32,7 @@ function attemptRegistration($fName, $lName, $mat, $userPassword){
             
             
         else{
-            return array ("status" => "Something went wrong");
+            return array ("status" => "ID Already exists!");
             $conn -> close();
         }
             
@@ -54,7 +53,6 @@ function attemptRegisterEmployee($fName, $lName, $mat, $position){
     $sql = "INSERT INTO Employee (fName,lName, matricula, position) 
             VALUES ('$fName','$lName','$mat','$position')";
     
-    echo $sql;
     // Run query and store resulting data
     $result = $conn->query($sql);
         
@@ -65,7 +63,7 @@ function attemptRegisterEmployee($fName, $lName, $mat, $position){
             
             
         else{
-            return array ("status" => "Something went wrong");
+            return array ("status" => "ID Already exists!");
             $conn -> close();
         }
             
