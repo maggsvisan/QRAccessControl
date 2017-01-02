@@ -2,6 +2,7 @@
 header('Content-type: application/json');
 require_once __DIR__ . '/dataLayer.php';
 $action = $_POST["action"];
+
 switch ($action){
     
     case "login": loginFunction();
@@ -19,12 +20,7 @@ switch ($action){
     case "deleteSession": deleteSession();
                     break; 
     case "registerEmp": registerEmployee();
-                    break;
-   //case "valideEmployee": validateEmployee();
-     //               break;
-    //case "valideAdmin": validateAdmin();
-      //            break;
-    
+                    break;    
     case "loadEmployees": loadEmployees();
                     break;
     case "loadAdmins": loadAdmins();
@@ -33,10 +29,7 @@ switch ($action){
                     break;
     case "removeAdmin":removeAdmin();
                     break;
-    /*case "loadAllEmployees": loadAllEmployees();
-                    break;
-    case "loadAllAdmin": loadAllAdmin();
-                    break;      */
+
 }
 
 function registerFunction(){ //registers an admin 
@@ -95,6 +88,11 @@ function removeEmployee (){
         
             if($result2["status"]=="SUCCESS"){
                 $response2= array("message"=> "Employee deleted successfully");
+                echo json_encode($response2);
+            }
+        
+            else {
+                $response2= array("message"=> "Employee doesn't exists");
                 echo json_encode($response2);
             }
     }	

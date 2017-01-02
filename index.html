@@ -29,7 +29,7 @@
                 <ul class="nav navbar-nav" >                    
                     <li class="active" id="SearchEmployee"><a href="#page1"> Dashboard </a></li>
                     <li id="RmvSection"><a href="#page2"> Remove Accounts </a></li>
-                    <li id="RegSection"><a href="#page3"> Register Employee </a></li>
+                    <li id="RegSection"><a href="#page3"> Registration </a></li>
                     <li id="CurrentAccounts"><a href="#page4"> Current Registers </a></li>
                     <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>                   
                 </ul>
@@ -193,7 +193,6 @@
             </br>
             </br> 
                 <span type="button" class="btn btn-danger" id="remove2"> Remove </span> 
-                <span id="validate2" class="btn btn-danger" > Validate Admin </span>
         </div>
     </div>
 
@@ -206,11 +205,26 @@
           <tr>
             <td><button type="button" class="btn btn-info" id="EmployeeList">View employees Registered</button>
                 </br>  
-                <ol id="registeredEmployees" class="UsersList"> Registered employees: </ol>
+                <!-- <ol id="registeredEmployees" class="UsersList"> Registered employees: </ol> -->
+                 <table id="employeesTable"  class="table table-stripped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                    <tbody id="registeredEmployees"></tbody>
+                </table>
             </td>
             <td><button type="button" class="btn btn-info" id="AdminList">View administrators Registered</button>
                  </br>  
-                <ol id="registeredAdmins" class="UsersList"> Registered administrators: </ol>
+               <!-- <ol id="registeredAdmins" class="UsersList"> Registered administrators: </ol> -->
+                <table id="adminsTable"  class="table table-stripped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                    <tbody id="registeredAdmins"></tbody>
+                </table>
+                
             </td>
           </tr>
         </thead>

@@ -106,15 +106,18 @@ function attemptRemoveEmployee ($mat){
             $sql = "DELETE FROM Employee WHERE matricula='$mat'";
 		
 			$result = $conn->query($sql);
+            
+            echo $sql;
+            echo $result;
 			
-            if ($result != null)
+            if ($result >= 1)
 			{
                 return array( "status" => "SUCCESS");
 			}
 			
             else{
 
-				return array("status" => "This employee cannot be deleted");
+				return array("status" => "This employee doesn't exist");
 			}
 		}else{
 			$conn -> close();
@@ -123,35 +126,6 @@ function attemptRemoveEmployee ($mat){
 }
 
 
-function attemptValidateAdmin($matricula){
-    
-$conn = connectionToDataBase();
-
-    if ($conn != null){
-        
-        $sql="SELECT * FROM Admin WHERE matricula= '$matricula'";
-        
-        $result = $conn -> query($sql); 
-        
-        if ($result->num_rows > 0)
-                    {
-                        $row = $result -> fetch_assoc();
-                        $conn -> close();
-                        return array("status" => "SUCCESS");
-                    }
-         else{
-                        $conn -> close();
-                        return array("status" => "Admin not found");
-                    }
-
-    }
-    
-    else{
-        $conn -> close();
-        return array("status" => "CONNECTION WITH DB WENT WRONG");
-    }  
-
-}
 
 
 function attemptRemoveAdmin($mat){
@@ -160,7 +134,7 @@ $conn = connectionToDataBase();
 
     if ($conn != null){
 
-        $sql = "DELETE FROM Admin WHERE matricula='$mat'";;	
+        $sql = "DELETE FROM Admin WHERE matricula='$mat'";
         $result = $conn->query($sql);
 
             if ($result != null)	
@@ -169,7 +143,7 @@ $conn = connectionToDataBase();
             }
 
             else{
-                return array("status" => "This administrator cannot be deleted");
+                return array("status" => "This administrator doesn't exist");
             }
     }
 
