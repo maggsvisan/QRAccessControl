@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,31 +15,36 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<!------------------ NAVBAR SECTION ------------------>
-<nav class="navbar navbar-inverse navbar-fixed-top" id="navBarID">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <div class="navbar-header"> <a href="#" class="navbar-brand">QR Access Control</a> </div>
-        <!-- Menu Items -->
-        <div class="container-fluid" id="menutoolbar">
-            <ul class="nav navbar-nav">
-                <li class="active" id="SearchEmployee"><a href="#page1"> Dashboard </a></li>
-                <li id="RmvSection"><a href="#page2"> Remove Accounts </a></li>
-                <li id="RegSection"><a href="#page3"> Registration </a></li>
-                <li id="CurrentAccounts"><a href="#page4"> Current Registers </a></li>
-                <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li align="right" style="display:block"> <a id="currentLogin"> Currently login as:  </a> </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!------------------------------------------------------>
-
 <body>
-    
-<!------------------ DASHBOARD SECTION ------------------>
+    <!------------------ NAVBAR SECTION ------------------>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navBarID">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <div class="navbar-header"> <a href="#" class="navbar-brand">QR Access Control</a> </div>
+            <!-- Menu Items -->
+            <div class="container-fluid" id="menutoolbar">
+                <ul class="nav navbar-nav">
+                    <li class="active" id="SearchEmployee"><a href="#page1"> Dashboard </a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Remove Account <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Delete an account</li>
+                            <li><a href="#">Employee</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Administrator</a></li>
+                        </ul>
+                    </li>
+                    <li id="RegSection"><a href="#page3"> Registration </a></li>
+                    <li id="CurrentAccounts"><a href="#page4"> Current Registers </a></li>
+                    <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li align="right" style="display:block"> <a id="currentLogin"> Currently login as:  </a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!------------------------------------------------------>
+    <!------------------ DASHBOARD SECTION ------------------>
     <div id="DashboardArrives" class="container-fluid">
         </br>
         <h2 class="sub-header"> Arrival and Departs of employees</h2>
@@ -57,9 +62,8 @@
             </table>
         </div>
     </div>
-<!------------------------------------------------------>
-    
-<!------------- LOGIN SECTION --------------->
+    <!------------------------------------------------------>
+    <!------------- LOGIN SECTION --------------->
     <div id="LoginSec" class="container">
         <div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -89,15 +93,14 @@
         </div>
     </div>
     </div>
-<!------------------------------------------------------>
-
-<!------------------ REGISTER SECTION ------------------>
-
-    <div id="RegSec" class="container" >
+    <!------------------------------------------------------>
+    <!------------------ REGISTER SECTION ------------------>
+    <div id="RegSec" class="container">
         <table class="table">
             <tr>
                 <caption>
-                    <h4> Select: </h4> </caption>
+                    </br>
+                    <hr class="colorgraph"> </caption>
             </tr>
             <tr>
                 <th>
@@ -167,15 +170,14 @@
             </form>
         </div>
     </div>
-<!------------------------------------------------------>
-
-<!------------------ REMOVE SECTION ------------------>
-
+    <!------------------------------------------------------>
+    <!------------------ REMOVE SECTION ------------------>
     <div id="RemoveSec" class="container">
         <table class="table">
             <tr>
                 <caption>
-                    <h4> Select: </h4> </caption>
+                    </br>
+                    <hr class="colorgraph"> </caption>
             </tr>
             <tr>
                 <th>
@@ -185,61 +187,51 @@
             </tr>
         </table>
         <div class="container" id="DivRemoveEmployee">
-           <!-- <p> Enter employee's ID number</p>
+            <!-- <p> Enter employee's ID number</p>
             <input id="RemoveEmployee" type="text"> </br>
             </br> <span type="button" class="btn btn-danger" id="remove1"> Remove </span> </div>
             -->
-            
             <!--Remove with style -->
             <form class="container-fluid">
                 <div class="input-group">
-                  <input id="RemoveEmployee" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; "placeholder="Search employee by ID">
-                  <div class="input-group-btn">
-                    <a  id="remove1" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px;">
-                        <span class="glyphicon glyphicon-remove"></span> Remove 
-                    </a>
-                  </div>
+                    <input id="RemoveEmployee" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; " placeholder="Search employee by ID">
+                    <div class="input-group-btn">
+                        <a id="remove1" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px;"> <span class="glyphicon glyphicon-remove"></span> Remove </a>
+                    </div>
                 </div>
-             </form>
+            </form>
             <!------------------------------>
-        </br>
+            </br>
         </div>
-
         <div class="container" id="DivRemoveAdmin">
             <!--
             <p> Enter administrator's ID number</p>
             <input id="RemoveAdmin" type="text"> </br>
             </br> <span type="button" class="btn btn-danger" id="remove2"> Remove </span> 
             -->
-            
             <form class="container-fluid">
                 <div class="input-group">
-                  <input id="RemoveAdmin" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; "placeholder="Search administrator by ID">
-                  <div class="input-group-btn">
-                    <a  id="remove2" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px;">
-                        <span class="glyphicon glyphicon-remove"></span> Remove 
-                    </a>
-                  </div>
+                    <input id="RemoveAdmin" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; " placeholder="Search administrator by ID">
+                    <div class="input-group-btn">
+                        <a id="remove2" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px;"> <span class="glyphicon glyphicon-remove"></span> Remove </a>
+                    </div>
                 </div>
-             </form> 
+            </form>
         </div>
     </div>
-
-<!------------------------------------------------------>
-
-<!------------------ LOAD RECORDS ADMIN/EMPLOYEES SECTION ------------------>
-
+    <!------------------------------------------------------>
+    <!------------------ LOAD RECORDS ADMIN/EMPLOYEES SECTION ------------------>
     <div class="container" id="CurrentAccountsSec">
         <table class="table table-striped">
             <tr>
                 <caption>
-                    <h4>Select which account type you want to view </h4> </caption>
+                    </br>
+                    <hr class="colorgraph"> </caption>
             </tr>
             <thead>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-info" id="EmployeeList">View employees Registered</button>
-                        </br>
+                        <button type="button" class="btn btn-info" id="EmployeeList">View employees registered</button>
                         <!-- <ol id="registeredEmployees" class="UsersList"> Registered employees: </ol> -->
                         <table id="employeesTable" class="table table-stripped">
                             <tr>
@@ -250,8 +242,7 @@
                         </table>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-info" id="AdminList">View administrators Registered</button>
-                        </br>
+                        <button type="button" class="btn btn-info" id="AdminList">View administrators registered</button>
                         <!-- <ol id="registeredAdmins" class="UsersList"> Registered administrators: </ol> -->
                         <table id="adminsTable" class="table table-stripped">
                             <tr>
@@ -265,9 +256,7 @@
             </thead>
         </table>
     </div>
-
-<!------------------------------------------------------------------------------->
-
+    <!------------------------------------------------------------------------------->
 </body>
 <script src="java.js">
 </script>
