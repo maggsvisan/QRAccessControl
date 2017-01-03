@@ -70,6 +70,7 @@ $(document).ready(function () {
         $("#RegAdmin").hide();
         $("#RegEmp").hide();
     });
+    
     $("#CurrentAccounts").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").hide();
@@ -77,6 +78,7 @@ $(document).ready(function () {
         $("#RegSec").hide();
         $("#CurrentAccountsSec").show();
     });
+    /*
     $("#RmvSection").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").show();
@@ -84,6 +86,7 @@ $(document).ready(function () {
         $("#RegSec").hide();
         $("#CurrentAccountsSec").hide();
     });
+    */
     $("#SearchEmployee").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").hide();
@@ -125,7 +128,6 @@ $(document).ready(function () {
         }
         , error: function (errorMessage) {
             alert(errorMessage.responseText);
-            alert("False verify");
             $("#currentLogin").hide();
         }
     });

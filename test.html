@@ -1,28 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-  
-<div class="container">
-  <h1>Input Group Button</h1>
-  <p>The .input-group class is a container to enhance an input by adding an icon, text or a button in front or behind it as a "help text".</p>
-  <p>The .input-group-btn class attaches a button next to an input field. This is often used as a search bar:</p>
-  <form>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-      </div>
+{% extends "../templates/main_template.njk" %}
+{% block title %}Evaluación{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">Evaaluación formal</div>
+                <div class="panel-body">Dentro de la evaluación formativa se utilizan los siguientes Formatos de
+                    Evaluación:
+                    <ul>
+                        <li>Autoevaluación parcial.</li>
+                        <li>PEI. Partners Evaluation Instrument (Instrumento de Evalaución de Compañeros.</li>
+                        <li>Instrumento de Evalaución de habilidades, actitudes y valores.</li>
+                        <li>Plan de Mejora de Trabajo en Equipo.</li>
+                    </ul>
+                    <br>
+                    <div class="col-xs-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Ponderación parcial</div>
+                            <table class="table">
+                                <tr>
+                                    <th>Criterio</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td>Tareas (Actividades del Parcial)</td>
+                                    <td>30%</td>
+                                </tr>
+                                <tr>
+                                    <td>Examen Parcial</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>Autoevaluación Parcial</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>PEI. Partners Evaluation Instrument (Instrumento de Evalaución de Compañeros)
+                                    </td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td>Plan de Mejora de Trabajo en Equipo</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>100%</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Ponderación final</div>
+                            <table class="table">
+                                <tr>
+                                    <th>Criterio</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td>3 exámenes parciales (Actividades del Parcial):</td>
+                                    <td>60%</td>
+                                </tr>
+                                <tr>
+                                    <td>Proyecto final:</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Autoevaluación final:</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Examén final:</td>
+                                    <td>15%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total:</strong></td>
+                                    <td><strong>100%</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">Evaluación sumativa emergente</div>
+                <table class="table small-padding">
+                    <tr>
+                        <td><p>1er Parcial Cada tarea no entregada y/o revisada en su manual de clase: Restará
+                                puntuación de cada parcial 20%. Es necesario que el alumno efectúe las tareas de cada
+                                parcial pues forman parte del examen escrito.</p></td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td><p>2do Parcial. Cada tarea no entregada y/o revisada en su manual de clase: Restará
+                                puntuación de cada parcial 20%. Es necesario que el alumno efectúe las tareas de cada
+                                parcial pues forman parte del examen escrito.</p></td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td><p>3er. Parcial Cada tarea no entregada y/o revisada en su manual de clase: Restará
+                                puntuación de cada parcial 20%. Es necesario que el alumno efectúe las tareas de cada
+                                parcial pues forman parte del examen escrito. En el 3er parcial se contemplan
+                                ACTIVIDADES efectuadas con el Software ECOTECT, las cuales formarán parte de la
+                                ponderación final del curso.</p></td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td><p>Final Se contemplan ACTIVIDADES efectuadas con el Software ECOTECT, las cuales formarán
+                                parte de la ponderación final del curso.</p></td>
+                        <td>40%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gran total</strong></td>
+                        <td><strong>100%</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </form>
-</div>
-
-</body>
-</html>
+{% endblock %}
