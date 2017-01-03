@@ -5,7 +5,7 @@ CREATE TABLE Employee (
     position VARCHAR(50) NOT NULL
 );
 
-
+ 
 CREATE TABLE Admin (
    fName VARCHAR(30) NOT NULL,
    lName VARCHAR(30) NOT NULL,
