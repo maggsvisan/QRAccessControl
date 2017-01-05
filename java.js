@@ -206,6 +206,7 @@ $(document).ready(function () {
                 $("#inPosition").val("");
             }
             else {
+                
                 var jsonData = {
                     "fName": $("#inFname2").val()
                     , "lName": $("#inLname2").val()
@@ -409,11 +410,19 @@ $(document).ready(function () {
                     });
                 
                 }
+            
+                else {
+                    alert("something went wrong");
+                }
+                
                 $("#registeredEmployees").empty();
                 $("#registeredEmployees").append(postUser);
+                
+                
             }
             , error: function (errorMessage) {
                 alert(errorMessage.responseText);
+                console.log(jsonResponse.status);
             }
         });
     });

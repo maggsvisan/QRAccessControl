@@ -137,13 +137,17 @@ function removeAdmin(){
 
 
 function loadAdmins(){
+    
     $result= loadAdministrators();
     echo json_encode($result);
 }
 
 function loadEmployees(){
     $result= loadAllEmployees();
+    
     echo json_encode($result);
+    
+    
 }
 
 

@@ -202,7 +202,7 @@ $conn = connectionToDataBase();
             $response = array();    
             
             while($row = $result -> fetch_assoc()) {
-                array_push($response, array("mat" => $row["matricula"], "fName" =>$row["fName"], "lName" => $row["lName"])); 
+                array_push($response, array("status"=>"SUCCESS", "mat" => $row["matricula"], "fName" =>$row["fName"], "lName" => $row["lName"])); 
             }
             return ($response);
         }
@@ -211,11 +211,12 @@ $conn = connectionToDataBase();
              header("No administrators registered");
         }
             
-    }
+        }
         else {
             $conn -> close();
-            header('HTTP/1.1 500 Bad connection, something went wrong while saving your data, please try again later');
-     }
+           // header('HTTP/1.1 500 Bad connection, something went wrong while saving your data, please try again later');
+            return array("status" => "No employees registered");
+        }
 }
 
 
