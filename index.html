@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,16 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-</head>
+    <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"> </head>
 
 <body>
-    <!------------------ NAVBAR SECTION ------------------>
+    <!-- NAVBAR SECTION -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="navBarID">
         <div class="container-fluid">
             <!-- Logo -->
@@ -28,12 +27,19 @@
                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Remove Account <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Delete an account</li>
-                            <li><a href="#">Employee</a></li>
+                            <li><a id="rmvEmp" href="#">Employee</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Administrator</a></li>
+                            <li><a id="rmvAdmin" href="#">Administrator</a></li>
                         </ul>
                     </li>
-                    <li id="RegSection"><a href="#page3"> Registration </a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registration <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Register a new account</li>
+                            <li id="regEmp"><a href="#">Employee</a></li>
+                            <li class="divider"></li>
+                            <li><a id="regAdmin" href="#">Administrator</a></li>
+                        </ul>
+                    </li>
                     <li id="CurrentAccounts"><a href="#page4"> Current Registers </a></li>
                     <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
                 </ul>
@@ -43,8 +49,8 @@
             </div>
         </div>
     </nav>
-    <!------------------------------------------------------>
-    <!------------------ DASHBOARD SECTION ------------------>
+    <!-- -->
+    <!-- DASHBOARD SECTION -->
     <div id="DashboardArrives" class="container-fluid">
         </br>
         <h2 class="sub-header"> Arrival and Departs of employees</h2>
@@ -62,8 +68,8 @@
             </table>
         </div>
     </div>
-    <!------------------------------------------------------>
-    <!------------- LOGIN SECTION --------------->
+    <!-- -->
+    <!--  LOGIN SECTION -->
     <div id="LoginSec" class="container">
         <div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -93,42 +99,29 @@
         </div>
     </div>
     </div>
-    <!------------------------------------------------------>
-    <!------------------ REGISTER SECTION ------------------>
-    <div id="RegSec" class="container">
-        <table class="table">
-            <tr>
-                <caption>
-                    </br>
-                    <hr class="colorgraph"> </caption>
-            </tr>
-            <tr>
-                <th>
-                    <div> <span type="button" class="btn btn-info" id="BtnAddEmployee"> Add Employee </span> </div>
-                </th>
-                <th> <span type="button" class="btn btn-info" id="BtnAddAdmin"> Add Administrator </span> </th>
-            </tr>
-        </table>
+    <!-- -->
+    <!-- REGISTER SECTION -->
+    <div id="RegSec" class="container">        
         <div id="RegAdmin" class="container-fluid">
-            <h2>Register Administrator</h2> </br>
+            <h2 class="divTitle" >Register Administrator</h2>
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">First Name:</label>
+                    <label class="control-label col-sm-2">First Name:</label>
                     <div class="col-sm-10">
                         <input id="inFname" type="string" value="" class="form-control" placeholder="First name"> </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">Last Name:</label>
+                    <label class="control-label col-sm-2">Last Name:</label>
                     <div class="col-sm-10">
                         <input id="inLname" type="string" value="" class="form-control" placeholder="Last name"> </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="pwd">Password:</label>
+                    <label class="control-label col-sm-2">Password:</label>
                     <div class="col-sm-10">
                         <input id="inPassword" type="password" value="" class="form-control" placeholder="Enter password"> </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="pwd">ID Number (Employee: L0XXXXXXX)</label>
+                    <label class="control-label col-sm-2">ID Number (Employee: L0XXXXXXX)</label>
                     <div class="col-sm-10">
                         <input id="inMatricula" type="string" value="" class="form-control" placeholder="Enter Administrators' ID"> </div>
                 </div>
@@ -139,8 +132,10 @@
                 </div>
             </form>
         </div>
+
         <div id="RegEmp" class="container-fluid">
-            <h2>Register Employee</h2> </br>
+            
+            <h2 class="divTitle"> Register Employee</h2> 
             <form class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-2">First Name:</label>
@@ -170,23 +165,11 @@
             </form>
         </div>
     </div>
-    <!------------------------------------------------------>
-    <!------------------ REMOVE SECTION ------------------>
+    <!-- -->
+    <!-- REMOVE SECTION -->
     <div id="RemoveSec" class="container">
-        <table class="table">
-            <tr>
-                <caption>
-                    </br>
-                    <hr class="colorgraph"> </caption>
-            </tr>
-            <tr>
-                <th>
-                    <div> <span type="button" class="btn btn-info" id="BtnRmvEmployee"> Remove Employee </span> </div>
-                </th>
-                <th> <span type="button" class="btn btn-info" id="BtnRmvAdmin"> Remove Admin </span> </th>
-            </tr>
-        </table>
-        <div class="container" id="DivRemoveEmployee">
+        
+        <div class="container" id="DivRemoveEmployee" style="margin-top: 50px;">
             <!-- <p> Enter employee's ID number</p>
             <input id="RemoveEmployee" type="text"> </br>
             </br> <span type="button" class="btn btn-danger" id="remove1"> Remove </span> </div>
@@ -200,10 +183,10 @@
                     </div>
                 </div>
             </form>
-            <!------------------------------>
+            <!-- -->
             </br>
         </div>
-        <div class="container" id="DivRemoveAdmin">
+        <div class="container" id="DivRemoveAdmin" style="margin-top: 50px;">
             <!--
             <p> Enter administrator's ID number</p>
             <input id="RemoveAdmin" type="text"> </br>
@@ -219,8 +202,8 @@
             </form>
         </div>
     </div>
-    <!------------------------------------------------------>
-    <!------------------ LOAD RECORDS ADMIN/EMPLOYEES SECTION ------------------>
+    <!-- -->
+    <!-- LOAD RECORDS ADMIN/EMPLOYEES SECTION -->
     <div class="container" id="CurrentAccountsSec">
         <table class="table table-striped">
             <tr>
@@ -231,7 +214,7 @@
             <thead>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-info" id="EmployeeList">View employees registered</button>
+                        <button type="button" class="btn btn-info" id="EmployeeList">View employees Registered</button>
                         <!-- <ol id="registeredEmployees" class="UsersList"> Registered employees: </ol> -->
                         <table id="employeesTable" class="table table-stripped">
                             <tr>
@@ -242,7 +225,7 @@
                         </table>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-info" id="AdminList">View administrators registered</button>
+                        <button type="button" class="btn btn-info" id="AdminList">View administrators Registered</button>
                         <!-- <ol id="registeredAdmins" class="UsersList"> Registered administrators: </ol> -->
                         <table id="adminsTable" class="table table-stripped">
                             <tr>
@@ -256,7 +239,7 @@
             </thead>
         </table>
     </div>
-    <!------------------------------------------------------------------------------->
+    <!-- -->
 </body>
 <script src="java.js">
 </script>

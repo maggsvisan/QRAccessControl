@@ -1,3 +1,4 @@
+/*
 ul {
     list-style-type: none;
     margin: 0;
@@ -27,6 +28,7 @@ li a {
     margin-bottom: auto;
     margin-top: auto;
 }
+*/
 
 .table td,th {
    text-align: center;   
@@ -70,11 +72,14 @@ padding-top: 24px;
 
  }
 
-
 #AdminList{
     margin-bottom: 15px;
 }
 
 #EmployeeList{
     margin-bottom: 15px;
+}
+
+.divTitle{
+    margin-top: 50px;
 }

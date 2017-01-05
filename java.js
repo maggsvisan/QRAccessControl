@@ -65,7 +65,6 @@ $(document).ready(function () {
         $("#LoginSec").hide();
         $("#RemoveSec").hide();
         $("#DashboardArrives").hide();
-        $("#RegSec").show();
         $("#CurrentAccountsSec").hide();
         $("#RegAdmin").hide();
         $("#RegEmp").hide();
@@ -78,7 +77,7 @@ $(document).ready(function () {
         $("#RegSec").hide();
         $("#CurrentAccountsSec").show();
     });
-    /*
+    
     $("#RmvSection").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").show();
@@ -86,7 +85,8 @@ $(document).ready(function () {
         $("#RegSec").hide();
         $("#CurrentAccountsSec").hide();
     });
-    */
+
+    
     $("#SearchEmployee").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").hide();
@@ -138,10 +138,16 @@ $(document).ready(function () {
 ///////////////// REGISTER ADMIN ////////////////// 
 ///////////////////////////////////////////////////
 
-    $("#BtnAddAdmin").click(function () {
-        event.preventDefault();
+    $("#regAdmin").click(function () {
+        $("#DashboardArrives").hide();
+        $("#RegSec").show();
         $("#RegAdmin").show();
         $("#RegEmp").hide();
+        $("#LoginSec").hide();
+        $("#RemoveSec").hide();
+        $("#DashboardArrives").hide();
+        $("#CurrentAccountsSec").hide();
+        
         $("#registerBtn").click(function () {
             if ($("#inFname").val() == ("") || $("#inLname").val() == ("") || $("#inMatricula").val() == ("") || $("#inPassword").val() == ("")) {
                 alert("Fill all the blanks, please");
@@ -188,10 +194,17 @@ $(document).ready(function () {
 ///////////////// REGISTER EMPLOYEE ////////////////// 
 /////////////////////////////////////////////////////
 
-    $("#BtnAddEmployee").click(function () {
-        event.preventDefault();
+    $("#regEmp").click(function () {
+        $("#RegSec").show();
+        $("#DashboardArrives").hide();
         $("#RegAdmin").hide();
         $("#RegEmp").show();
+        $("#LoginSec").hide();
+        $("#RemoveSec").hide();
+        $("#DashboardArrives").hide();
+        $("#CurrentAccountsSec").hide();
+        
+    
         $("#registerBtn2").click(function () {
             if ($("#inFname2").val() == ("") || $("#inLname2").val() == ("") || $("#inMatricula2").val() == ("") || $("#inPosition").val() == ("")) {
                 alert("Fill all the blanks, please");
@@ -238,8 +251,10 @@ $(document).ready(function () {
 ///////////////// DELETE EMPLOYEE ////////////////// 
 /////////////////////////////////////////////////////
 
-    $("#BtnRmvEmployee").click(function () {
-        event.preventDefault();
+    $("#rmvEmp").click(function () {
+        $("#DashboardArrives").hide();
+        $("#LoginSec").hide();
+        $("#RemoveSec").show();
         $("#DivRemoveEmployee").show();
         $("#DivRemoveAdmin").hide();
         $("#remove1").click(function () {
@@ -256,7 +271,6 @@ $(document).ready(function () {
                     alert(jsonResponse.message + "!");
                     $("#DashboardArrives").show();
                     $("#RemoveSec").hide();
-                    $("#LoginSec").hide();
                     $("#RemoveEmployee").val("");
                     
                 }
@@ -278,10 +292,13 @@ $(document).ready(function () {
 ///////////////// DELETE ADMIN ////////////////// 
 /////////////////////////////////////////////////
 
-    $("#BtnRmvAdmin").click(function () {
-        event.preventDefault();
+    $("#rmvAdmin").click(function () {
+        $("#DashboardArrives").hide();
+        $("#LoginSec").hide();
+        $("#RemoveSec").show();
         $("#DivRemoveAdmin").show();
         $("#DivRemoveEmployee").hide();
+        
         $("#remove2").click(function () {
        
             var jsonData2 = {
