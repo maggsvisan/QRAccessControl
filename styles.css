@@ -86,17 +86,10 @@ padding-top: 24px;
 
 }
 
-#registerBtn2 {
+#registerBtn2, #registerBtn {
     padding-right: 100px;
     padding-left: 100px;
     margin-left: 250px;
     margin-right: 250px;
 }
 
-
-#registerBtn {
-    padding-right: 100px;
-    padding-left: 100px;
-    margin-left: 250px;
-    margin-right: 250px;
-}

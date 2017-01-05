@@ -107,10 +107,7 @@ function attemptRemoveEmployee ($mat){
 		
 			$result = $conn->query($sql);
             
-            echo $sql;
-            echo $result;
-			
-            if ($result >= 1)
+            if ($result != null)
 			{
                 return array( "status" => "SUCCESS");
 			}

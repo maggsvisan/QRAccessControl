@@ -244,7 +244,7 @@ $(document).ready(function () {
     
     
 /////////////////////////////////////////////////////
-///////////////// DELETE EMPLOYEE ////////////////// 
+///////////////// REMOVE EMPLOYEE ////////////////// 
 /////////////////////////////////////////////////////
 
     $("#rmvEmp").click(function () {
@@ -255,7 +255,9 @@ $(document).ready(function () {
         $("#CurrentAccountsSec").hide();
         $("#DivRemoveEmployee").show();
         $("#DivRemoveAdmin").hide();
+        
         $("#remove1").click(function () {
+            event.preventDefault();
             var jsonData = {
                 "mat": $("#RemoveEmployee").val()
                 , "action": "removeEmployee"
@@ -266,14 +268,13 @@ $(document).ready(function () {
                 , data: jsonData
                 , dataType: 'json'
                 , success: function (jsonResponse) {
-                    alert(jsonResponse.message + "!");
-                    $("#DashboardArrives").show();
-                    $("#RemoveSec").hide();
+                   // alert(jsonResponse.message + "!");
                     $("#RemoveEmployee").val("");
                     
                 }
                 , error: function (errorMessage) {
                     alert(errorMessage.responseText);
+                    $("#RemoveEmployee").val("");
             /*         $("#RemoveEmployee").val("");
                     $("#DashboardArrives").show();
                     $("#RemoveSec").hide();
@@ -287,7 +288,7 @@ $(document).ready(function () {
 //////////////////////////////////////////////////
 
 /////////////////////////////////////////////////
-///////////////// DELETE ADMIN ////////////////// 
+///////////////// REMOVE ADMIN ////////////////// 
 /////////////////////////////////////////////////
 
     $("#rmvAdmin").click(function () {
@@ -300,7 +301,7 @@ $(document).ready(function () {
         $("#DivRemoveEmployee").hide();
         
         $("#remove2").click(function () {
-       
+            event.preventDefault();
             var jsonData2 = {
                 "mat": $("#RemoveAdmin").val()
                 , "action": "removeAdmin"
@@ -310,13 +311,12 @@ $(document).ready(function () {
                 , type: "POST"
                 , data: jsonData2
                 , success: function (jsonResponse2) {
-                    alert(jsonResponse2.message + "!");
-                    $("#DashboardArrives").show();
+                  //  alert(jsonResponse2.message + "!");
                     $("#RemoveAdmin").val("");
-                    $("#RemoveSec").hide();
                 }
                 , error: function (errorMessage) {
                     alert(errorMessage.responseText);
+                     $("#RemoveAdmin").val("");
                 }
             });
         });
