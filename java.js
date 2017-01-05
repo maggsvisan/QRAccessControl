@@ -131,6 +131,7 @@ $(document).ready(function () {
 ///////////////////////////////////////////////////
 
     $("#regAdmin").click(function () {
+        event.preventDefault();
         $("#DashboardArrives").hide();
         $("#RegSec").show();
         $("#RegAdmin").show();
@@ -198,6 +199,8 @@ $(document).ready(function () {
         
     
         $("#registerBtn2").click(function () {
+            event.preventDefault();
+            
             if ($("#inFname2").val() == ("") || $("#inLname2").val() == ("") || $("#inMatricula2").val() == ("") || $("#inPosition").val() == ("")) {
                 alert("Fill all the blanks, please");
                 $("#inFname2").val("");
@@ -206,7 +209,7 @@ $(document).ready(function () {
                 $("#inPosition").val("");
             }
             else {
-                
+                //validate employee             
                 var jsonData = {
                     "fName": $("#inFname2").val()
                     , "lName": $("#inLname2").val()
