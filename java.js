@@ -259,8 +259,9 @@ $(document).ready(function () {
         $("#remove1").click(function () {
             event.preventDefault();
             var jsonData = {
-                "mat": $("#RemoveEmployee").val()
-                , "action": "removeEmployee"
+                "mat": $("#RemoveEmployee").val(), 
+                //"action": "removeEmployee"
+                "action": "validateEmployee"
             };
             $.ajax({
                 url: "data/applicationLayer.php"
@@ -268,7 +269,7 @@ $(document).ready(function () {
                 , data: jsonData
                 , dataType: 'json'
                 , success: function (jsonResponse) {
-                   // alert(jsonResponse.message + "!");
+                    alert(jsonResponse.message + "!");
                     $("#RemoveEmployee").val("");
                     
                 }
@@ -303,15 +304,17 @@ $(document).ready(function () {
         $("#remove2").click(function () {
             event.preventDefault();
             var jsonData2 = {
-                "mat": $("#RemoveAdmin").val()
-                , "action": "removeAdmin"
+                "mat": $("#RemoveAdmin").val(),
+               // , "action": "removeAdmin"
+                "action": "validateAdmin"
+                
             };
             $.ajax({
                 url: "data/applicationLayer.php"
                 , type: "POST"
                 , data: jsonData2
                 , success: function (jsonResponse2) {
-                  //  alert(jsonResponse2.message + "!");
+                    alert(jsonResponse2.message + "!");
                     $("#RemoveAdmin").val("");
                 }
                 , error: function (errorMessage) {

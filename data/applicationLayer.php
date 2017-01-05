@@ -28,7 +28,47 @@ switch ($action){
     case "removeEmployee": removeEmployee();
                     break;
     case "removeAdmin":removeAdmin();
+                    break;    
+    case "validateEmployee":validateEmployee();
                     break;
+    case "validateAdmin":validateAdmin();
+                    break;
+
+}
+
+function validateEmployee(){
+    
+    $mat= $_POST["mat"];
+    
+    $result = searchEmployee($mat);
+    
+    if ($result["status"] == "SUCCESS"){
+		 $response = array("message"=> "Employee exists");
+         echo json_encode($response); //sent it to presentation layer
+    }	
+    
+    else{
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]); //returns error from DataLayer
+    }	
+
+}
+
+function validateAdmin(){
+    
+    $mat= $_POST["mat"];
+    
+    $result = searchAdmin($mat);
+    
+    if ($result["status"] == "SUCCESS"){
+		 $response = array("message"=> "Admin exists");
+         echo json_encode($response); //sent it to presentation layer
+    }	
+    
+    else{
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]); //returns error from DataLayer
+    }	
 
 }
 

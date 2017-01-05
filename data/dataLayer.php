@@ -241,7 +241,7 @@ function attemptLogin($mat){
 			$conn -> close();
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
-	}
+}
 
 
 
@@ -284,4 +284,73 @@ function attemptCreateSession($mat, $userPassword){
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
 }
+
+function searchEmployee($mat){
+    
+    $conn = connectionToDataBase();
+
+    if ($conn != null){
+			
+        $sql = "SELECT fName, lName, matricula FROM Employee WHERE matricula = '$mat'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0)
+        {
+            $row = $result -> fetch_assoc();
+            $conn -> close();
+
+            return array("firstName" => $row["fName"], "lastName" => $row["lName"], "mat" => $row["matricula"],
+                          "status" => "SUCCESS");
+        }
+        else
+        {
+            $conn -> close();
+            return array("status" => "employee doesn't exist");
+        }
+    }
+    
+    else{
+        $conn -> close();
+		return array("status" => "CONNECTION WITH DB WENT WRONG");
+	}
+    
+}
+
+
+
+function searchAdmin($mat){
+    
+    $conn = connectionToDataBase();
+
+    if ($conn != null){
+			
+        $sql = "SELECT fName, lName, matricula FROM Admin WHERE matricula = '$mat'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0)
+        {
+            $row = $result -> fetch_assoc();
+            $conn -> close();
+
+            return array("firstName" => $row["fName"], "lastName" => $row["lName"], "mat" => $row["matricula"],
+                          "status" => "SUCCESS");
+        }
+        else
+        {
+            $conn -> close();
+            return array("status" => "Administrator doesn't exist");
+        }
+    }
+    
+    else{
+        $conn -> close();
+		return array("status" => "CONNECTION WITH DB WENT WRONG");
+	}
+    
+}
+
+
+
 ?>
