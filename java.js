@@ -69,15 +69,7 @@ $(document).ready(function () {
         $("#RegAdmin").hide();
         $("#RegEmp").hide();
     });
-    
-    $("#CurrentAccounts").on("click", function () {
-        $("#LoginSec").hide();
-        $("#RemoveSec").hide();
-        $("#DashboardArrives").hide();
-        $("#RegSec").hide();
-        $("#CurrentAccountsSec").show();
-    });
-    
+        
     $("#RmvSection").on("click", function () {
         $("#LoginSec").hide();
         $("#RemoveSec").show();
@@ -252,9 +244,11 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////
 
     $("#rmvEmp").click(function () {
+        $("#RegSec").hide();
         $("#DashboardArrives").hide();
         $("#LoginSec").hide();
         $("#RemoveSec").show();
+        $("#CurrentAccountsSec").hide();
         $("#DivRemoveEmployee").show();
         $("#DivRemoveAdmin").hide();
         $("#remove1").click(function () {
@@ -293,9 +287,11 @@ $(document).ready(function () {
 /////////////////////////////////////////////////
 
     $("#rmvAdmin").click(function () {
+        $("#RegSec").hide();
         $("#DashboardArrives").hide();
         $("#LoginSec").hide();
         $("#RemoveSec").show();
+        $("#CurrentAccountsSec").hide();
         $("#DivRemoveAdmin").show();
         $("#DivRemoveEmployee").hide();
         
@@ -328,8 +324,16 @@ $(document).ready(function () {
 /////////////////////////////////////////////////
 ///////////////LOAD ADMINS //////////////////////
 /////////////////////////////////////////////////
-    $("#AdminList").click(function () {
-    event.preventDefault();
+    $("#showAdmin").click(function () {
+        
+    $("#LoginSec").hide();
+        $("#RemoveSec").hide();
+        $("#DashboardArrives").hide();
+        $("#RegSec").hide();
+        $("#CurrentAccountsSec").show();
+        $("#currentEmployees").hide();
+        $("#currentAdmins").show();
+    
         var jsonData = {
             "action": "loadAdmins"
         };
@@ -352,6 +356,10 @@ $(document).ready(function () {
                                     +  "<td>" + jsonResponse[index].fName + " " + jsonResponse[index].lName + "</td></tr>";   
                     });
                 }
+                
+                else {
+                    alert("no employees registered");
+                }
                 $("#registeredAdmins").empty();
                 $("#registeredAdmins").append(postUser);
             }
@@ -367,9 +375,16 @@ $(document).ready(function () {
 ///////////////LOAD EMPLOYEES //////////////////////
 ////////////////////////////////////////////////////
 
-    $("#EmployeeList").click(function () {
+    $("#showEmp").click(function () {
         
-        event.preventDefault();
+        $("#LoginSec").hide();
+        $("#RemoveSec").hide();
+        $("#DashboardArrives").hide();
+        $("#RegSec").hide();
+        $("#CurrentAccountsSec").show();
+        $("#currentEmployees").show();
+        $("#currentAdmins").hide();
+
         
         var jsonData = {
             "action": "loadEmployees"

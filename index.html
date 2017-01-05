@@ -40,7 +40,14 @@
                             <li><a id="regAdmin" href="#">Administrator</a></li>
                         </ul>
                     </li>
-                    <li id="CurrentAccounts"><a href="#page4"> Current Registers </a></li>
+                    <li class="dropdown"> <a href="#" id="CurrentAccounts" class="dropdown-toggle" data-toggle="dropdown">Current Registers <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Select type of account</li>
+                            <li ><a id="showEmp" href="#">Employee</a></li>
+                            <li class="divider"></li>
+                            <li><a id="showAdmin" href="#">Administrator</a></li>
+                        </ul>
+                    </li>
                     <li id="logoutButton" align="right" style="display:block"><a> Logout </a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -52,10 +59,15 @@
     <!-- -->
     <!-- DASHBOARD SECTION -->
     <div id="DashboardArrives" class="container-fluid">
-        </br>
-        <h2 class="sub-header"> Arrival and Departs of employees</h2>
+       <!-- <h2 class="sub-header"> Arrival and Departs of employees</h2> -->
         <div class="table-responsive">
             <table class="table table-stripped" id="dashbord">
+                <tr>
+                    <caption>
+                        </br>
+                         <h2 class="divTitle">Arrival and Departs of employees</h2>
+                        <hr class="colorgraph"> </caption>
+                </tr>
                 <thead>
                     <tr>
                         <th> Employee</th>
@@ -101,9 +113,9 @@
     </div>
     <!-- -->
     <!-- REGISTER SECTION -->
-    <div id="RegSec" class="container">        
+    <div id="RegSec" class="container">
         <div id="RegAdmin" class="container-fluid">
-            <h2 class="divTitle" >Register Administrator</h2>
+            <h2 class="divTitle">Register Administrator</h2>
             <form class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-2">First Name:</label>
@@ -132,10 +144,8 @@
                 </div>
             </form>
         </div>
-
         <div id="RegEmp" class="container-fluid">
-            
-            <h2 class="divTitle"> Register Employee</h2> 
+            <h2 class="divTitle"> Register Employee</h2>
             <form class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-2">First Name:</label>
@@ -166,78 +176,83 @@
         </div>
     </div>
     <!-- -->
+
     <!-- REMOVE SECTION -->
     <div id="RemoveSec" class="container">
-        
-        <div class="container" id="DivRemoveEmployee" style="margin-top: 50px;">
-            <!-- <p> Enter employee's ID number</p>
-            <input id="RemoveEmployee" type="text"> </br>
-            </br> <span type="button" class="btn btn-danger" id="remove1"> Remove </span> </div>
-            -->
-            <!--Remove with style -->
+        <div class="container" id="DivRemoveEmployee" style="margin-top: 50px;">   
             <form class="container-fluid">
                 <div class="input-group">
-                    <input id="RemoveEmployee" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; " placeholder="Search employee by ID">
+                    <h2 class= "divTitle"> Enter ID to delete an employee account </h2>
+                    <input id="RemoveEmployee" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; " placeholder="Enter employee's ID">
                     <div class="input-group-btn">
-                        <a id="remove1" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px;"> <span class="glyphicon glyphicon-remove"></span> Remove </a>
+                        <a id="remove1" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px; margin-top: 104px; "> <span class="glyphicon glyphicon-remove"></span> Remove </a>
                     </div>
                 </div>
             </form>
-            <!-- -->
-            </br>
         </div>
+        
         <div class="container" id="DivRemoveAdmin" style="margin-top: 50px;">
-            <!--
-            <p> Enter administrator's ID number</p>
-            <input id="RemoveAdmin" type="text"> </br>
-            </br> <span type="button" class="btn btn-danger" id="remove2"> Remove </span> 
-            -->
             <form class="container-fluid">
                 <div class="input-group">
-                    <input id="RemoveAdmin" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; " placeholder="Search administrator by ID">
+                    <h2 class= "divTitle"> Enter ID to delete an administrator account </h2>
+                    <input id="RemoveAdmin" type="text" class="form-control" style=" padding-bottom: 20px; padding-top: 20px; padding-bottom: 21px; " placeholder="Enter administrator's ID">
                     <div class="input-group-btn">
-                        <a id="remove2" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px;"> <span class="glyphicon glyphicon-remove"></span> Remove </a>
+                        <a id="remove2" href="#" class="btn btn-danger btn-lg" style="padding-bottom: 8.5; bottom: 1px;margin-bottom: 1px; border-bottom-width: 0px; margin-top: 104px; "> <span class="glyphicon glyphicon-remove"></span> Remove </a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <!-- -->
+
     <!-- LOAD RECORDS ADMIN/EMPLOYEES SECTION -->
     <div class="container" id="CurrentAccountsSec">
-        <table class="table table-striped">
-            <tr>
-                <caption>
-                    </br>
-                    <hr class="colorgraph"> </caption>
-            </tr>
-            <thead>
+        <div class="container" id="currentEmployees">
+            <table class="table table-striped">
                 <tr>
-                    <td>
-                        <button type="button" class="btn btn-info" id="EmployeeList">View employees Registered</button>
-                        <!-- <ol id="registeredEmployees" class="UsersList"> Registered employees: </ol> -->
-                        <table id="employeesTable" class="table table-stripped">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                            </tr>
-                            <tbody id="registeredEmployees"></tbody>
-                        </table>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-info" id="AdminList">View administrators Registered</button>
-                        <!-- <ol id="registeredAdmins" class="UsersList"> Registered administrators: </ol> -->
-                        <table id="adminsTable" class="table table-stripped">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                            </tr>
-                            <tbody id="registeredAdmins"></tbody>
-                        </table>
-                    </td>
+                    <caption>
+                        </br>
+                        <h2 class="divTitle"> Employees registered:</h2>
+                        <hr class="colorgraph"> </caption>
                 </tr>
-            </thead>
-        </table>
+                <thead>
+                    <tr>
+                        <td>
+                            <table id="employeesTable" class="table table-stripped">
+                                <tr>
+                                    <th style="text-align: center">ID</th>
+                                    <th style="text-align: center">Name</th>
+                                </tr>
+                                <tbody id="registeredEmployees"></tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="container" id="currentAdmins">
+            <table class="table table-striped">
+                <tr>
+                    <caption>
+                        </br>
+                         <h2 class="divTitle"> Administrators registered:</h2>
+                        <hr class="colorgraph"> </caption>
+                </tr>
+                <thead>
+                    <tr>
+                        <td>
+                            <table id="adminsTable" class="table table-stripped">
+                                <tr>
+                                    <th style="text-align: center">ID</th>
+                                    <th style="text-align: center">Name</th>
+                                </tr>
+                                <tbody id="registeredAdmins"></tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
     <!-- -->
 </body>
