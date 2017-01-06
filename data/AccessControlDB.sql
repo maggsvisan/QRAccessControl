@@ -20,8 +20,6 @@ CREATE TABLE Registers (
     arrival TIME NOT NULL, 
     depart TIME NOT NULL, 
     dateReg DATE NOT NULL,
-    
-    FOREIGN KEY (mat) REFERENCES Employee(matricula)
 ); 
 
 
@@ -34,6 +32,10 @@ VALUES ('Eva', 'Villarreal' , '12', 'intern' )
 INSERT INTO Registers(mat, arrival, depart, dateReg)
 values ('12', '13:00:15', '13:30:15' , '2010-01-02' )
 
+INSERT INTO Registers(mat, arrival, depart, dateReg)
+values ('1195', '13:00:15', '13:30:15' , '2010-01-02' )
+
+
 INSERT INTO Admin( fName, lName , matricula, passwrd )
-VALUES ('Gerardo', 'Pinzon' , '4545', '123' )
+VALUES ('Maggie', 'Villarreal' , '12345', '5PzP/Krq1uEMS/6gamY/tIJ7zps+0mPVJCYlKB6+szg=')
 
