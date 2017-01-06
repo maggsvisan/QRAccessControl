@@ -190,8 +190,8 @@ $(document).ready(function () {
                                 , type: "POST"
                                 , data: jsonData2
                                 , dataType: 'json'
-                                , success: function (jsonResponse) {
-                                    alert(jsonResponse.message + "!");
+                                , success: function (jsonResponse2) {
+                                    alert(jsonResponse2.message + "!");
                                     $("#RegSec").hide();
                                     $("#LoginSec").hide();
                                     $("#DashboardArrives").show();
@@ -348,7 +348,7 @@ $(document).ready(function () {
                         dataType: 'json',
                         success: function (jsonResponse) {
                             
-                            console.log(jsonResponse.message + "!");
+                            alert(jsonResponse.message + "!");
 
                         },
                         error: function(errorMessage){
@@ -387,24 +387,45 @@ $(document).ready(function () {
         
         $("#remove2").click(function () {
             event.preventDefault();
-            var jsonData2 = {
+            var jsonData = {
                 "mat": $("#RemoveAdmin").val(),
-               // , "action": "removeAdmin"
                 "action": "validateAdmin"
                 
             };
             $.ajax({
-                url: "data/applicationLayer.php"
-                , type: "POST"
-                , data: jsonData2
-                , success: function (jsonResponse2) {
-                    alert(jsonResponse2.message + "!");
-                    $("#RemoveAdmin").val("");
-                }
-                , error: function (errorMessage) {
-                    alert(errorMessage.responseText);
-                     $("#RemoveAdmin").val("");
-                }
+                url: "data/applicationLayer.php",
+                type: "POST",
+                data: jsonData,
+                success: function (jsonResponse) {
+                    //alert(jsonResponse2.message + "!");
+                    
+                      var jsonData2 = {
+                        "mat": $("#RemoveAdmin").val(),
+                        "action": "removeAdmin"
+                      };
+                    
+                        $.ajax({
+                            url: "data/applicationLayer.php",
+                            type: "POST",
+                            data: jsonData2,
+                            success: function (jsonResponse2) {
+                                alert(jsonResponse2.message + "!");
+                                $("#RemoveAdmin").val("");  
+                            },
+                            
+                            error: function (errorMessage){
+                                alert(errorMessage.responseText);
+                                $("#RemoveAdmin").val("");
+                            }
+                              
+                        });   
+                  
+                },
+                    
+                 error: function (errorMessage) {
+                       alert(errorMessage.responseText);
+                        $("#RemoveAdmin").val("");
+                    }
             });
         });
     });

@@ -148,8 +148,8 @@ function removeAdmin(){
     }	
     
     else{
-        header('HTTP/1.1 500' . $result["status"]);
-        die($result["status"]); //returns error from DataLayer
+        $response= array("message"=> "Administrator doesn't exists");
+         echo json_encode($response);
     }	
     
 }

@@ -107,8 +107,6 @@ function attemptRemoveEmployee ($mat){
 			
             $sql = "DELETE FROM Employee WHERE matricula='$mat'";
 		
-            echo $sql;
-            
 			$result = $conn->query($sql);
             
             if ($result != null)
@@ -136,6 +134,7 @@ $conn = connectionToDataBase();
     if ($conn != null){
 
         $sql = "DELETE FROM Admin WHERE matricula='$mat'";
+        
         $result = $conn->query($sql);
 
             if ($result != null)	
