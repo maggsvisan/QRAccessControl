@@ -43,7 +43,7 @@ function validateEmployee(){
     $result = searchEmployee($mat);
     
     if ($result["status"] == "SUCCESS"){
-		 $response = array("message"=> "Employee exists");
+		 $response = array("message"=> "Employee already exists");
          echo json_encode($response); //sent it to presentation layer
     }	
     
@@ -61,7 +61,7 @@ function validateAdmin(){
     $result = searchAdmin($mat);
     
     if ($result["status"] == "SUCCESS"){
-		 $response = array("message"=> "Admin exists");
+		 $response = array("message"=> "Admin already exists");
          echo json_encode($response); //sent it to presentation layer
     }	
     
@@ -118,44 +118,23 @@ function removeEmployee (){
     
     $mat= $_POST["mat"];
     
-    $result= attemptRemoveRegister($mat);
+    $result= attemptRemoveEmployee($mat);
     
     if ($result["status"] == "SUCCESS"){
 		// $response = array("message"=> "Registers deleted");
         // echo json_encode($response); //sent it to presentation layer
+
+         $response= array("message"=> "Employee deleted successfully");
+         echo json_encode($response);
+        }
         
-         $result2= attemptRemoveEmployee($mat);
-        
-            if($result2["status"]=="SUCCESS"){
-                $response2= array("message"=> "Employee deleted successfully");
-                echo json_encode($response2);
-            }
-        
-            else {
-                $response2= array("message"=> "Employee doesn't exists");
-                echo json_encode($response2);
-            }
-    }	
-    
-    else{
-        header('HTTP/1.1 500' . $result["status"]);
-        die($result["status"]); //returns error from DataLayer
+     else {
+         $response= array("message"=> "Employee doesn't exists");
+         echo json_encode($response);
     }	
     
 }
-/*
-function validateAdmin(){
-    
-    $matricula= $_POST["mat"];
-    
-    debug_to_console( $matricula );
 
-    $result= attemptValidateAdmin($matricula);
-
-    echo json_encode($result["status"]);
-    
-}
-*/
 
 function removeAdmin(){
     

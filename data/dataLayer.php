@@ -32,7 +32,7 @@ function attemptRegistration($fName, $lName, $mat, $userPassword){
             
             
         else{
-            return array ("status" => "ID Already exists!");
+            return array ("status" => "Something went wrong");
             $conn -> close();
         }
             
@@ -50,23 +50,25 @@ function attemptRegisterEmployee($fName, $lName, $mat, $position){
     $conn = connectionToDataBase();
     if ($conn != null){
     
-    $sql = "INSERT INTO Employee (fName,lName, matricula, position) 
-            VALUES ('$fName','$lName','$mat','$position')";
-    
-    // Run query and store resulting data
-    $result = $conn->query($sql);
+        $sql = "INSERT INTO Employee (fName,lName, matricula, position) 
+                VALUES ('$fName','$lName','$mat','$position')";
         
-        if ($result == TRUE) {
-            return array("status" => "SUCCESS");   
-             $conn -> close();
-        } 
-            
-            
-        else{
-            return array ("status" => "ID Already exists!");
-            $conn -> close();
-        }
-            
+        
+
+        // Run query and store resulting data
+        $result = $conn->query($sql);
+
+            if ($result == TRUE) {
+                $conn -> close();
+                return array("status" => "SUCCESS");   
+            } 
+
+
+            else{
+                $conn -> close();
+                return array ("status" => "Something went wrong");
+            }
+
     }
         else {
             $conn -> close();
@@ -76,7 +78,7 @@ function attemptRegisterEmployee($fName, $lName, $mat, $position){
 }
 
 
-function attemptRemoveRegister ($mat){
+function attemptRemoveRegister ($mat){ //pendiente de agregar esta función
     $conn = connectionToDataBase();
 		if ($conn != null){
 			
@@ -105,6 +107,8 @@ function attemptRemoveEmployee ($mat){
 			
             $sql = "DELETE FROM Employee WHERE matricula='$mat'";
 		
+            echo $sql;
+            
 			$result = $conn->query($sql);
             
             if ($result != null)

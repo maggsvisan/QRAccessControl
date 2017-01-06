@@ -150,32 +150,65 @@ $(document).ready(function () {
                 $("#inMatricula").val("");
             }
             else {
+                
+                //valida que admin exista
+                
                 var jsonData = {
-                    "fName": $("#inFname").val()
-                    , "lName": $("#inLname").val()
-                    , "password": $("#inPassword").val()
-                    , "mat": $("#inMatricula").val()
-                    , "action": "register"
-                };
+                    "mat": $("#inMatricula").val(), 
+                    "action": "validateAdmin"
+                    
+                }
+                
+                
                 $.ajax({
-                    url: "data/applicationLayer.php"
-                    , type: "POST"
-                    , data: jsonData
-                    , dataType: 'json'
-                    , success: function (jsonResponse) {
+                    url: "data/applicationLayer.php",
+                    type: "POST",
+                    data: jsonData,
+                    dataType: 'json',
+                    success: function (jsonResponse) {
                         alert(jsonResponse.message + "!");
-                        $("#RegSec").hide();
-                        $("#LoginSec").hide();
-                        $("#DashboardArrives").show();
-                        $("#inFname").val("");
-                        $("#inLname").val("");
-                        $("#inPassword").val("");
-                        $("#inMatricula").val("");
-                    }
-                    , error: function (errorMessage) {
-                        alert(errorMessage.responseText);
-                    }
+                        
+                        $("#inFname2").val("");
+                        $("#inLname2").val("");
+                        $("#inMatricula2").val("");
+                        $("#inPosition").val("");
+
+                    },
+                    
+                    error: function (errorMessage){
+                       // alert(errorMessage.responseText);
+                        
+                          var jsonData2 = {
+                            "fName": $("#inFname").val()
+                            , "lName": $("#inLname").val()
+                            , "password": $("#inPassword").val()
+                            , "mat": $("#inMatricula").val()
+                            , "action": "register"
+                        };
+                            $.ajax({
+                                url: "data/applicationLayer.php"
+                                , type: "POST"
+                                , data: jsonData2
+                                , dataType: 'json'
+                                , success: function (jsonResponse) {
+                                    alert(jsonResponse.message + "!");
+                                    $("#RegSec").hide();
+                                    $("#LoginSec").hide();
+                                    $("#DashboardArrives").show();
+                                    $("#inFname").val("");
+                                    $("#inLname").val("");
+                                    $("#inPassword").val("");
+                                    $("#inMatricula").val("");
+                                }
+                                , error: function (errorMessage) {
+                                    alert(errorMessage.responseText);
+                                }
+                            });
+
+                        }
+                    
                 });
+                
             }
         });
     });
@@ -209,32 +242,64 @@ $(document).ready(function () {
                 $("#inPosition").val("");
             }
             else {
-                //validate employee             
-                var jsonData = {
-                    "fName": $("#inFname2").val()
-                    , "lName": $("#inLname2").val()
-                    , "mat": $("#inMatricula2").val()
-                    , "position": $("#inPosition").val()
-                    , "action": "registerEmp"
+                
+                var jsonData ={
+                    "mat": $("#inMatricula2").val(),
+                    "action": "validateEmployee"
                 };
+                
                 $.ajax({
-                    url: "data/applicationLayer.php"
-                    , type: "POST"
-                    , data: jsonData
-                    , success: function (jsonResponse) {
-                        alert(jsonResponse.message + "!");
-                        $("#RegSec").hide();
-                        $("#LoginSec").hide();
-                        $("#DashboardArrives").show();
-                        $("#inFname2").val("");
-                        $("#inLname2").val("");
-                        $("#inMatricula2").val("");
-                        $("#inPosition").val("");
-                    }
-                    , error: function (errorMessage) {
-                        alert(errorMessage.responseText);
-                    }
+                    
+                    url: "data/applicationLayer.php",
+                        type: "POST",
+                        data: jsonData,
+                        success: function (jsonResponse) {
+                            alert(jsonResponse.message + "!");
+                            $("#inFname2").val("");
+                            $("#inLname2").val("");
+                            $("#inMatricula2").val("");
+                            $("#inPosition").val("");
+
+                        },
+                    
+                        error: function (errorMessage){ 
+                            
+                               var jsonData2 = {
+                                "fName": $("#inFname2").val()
+                                , "lName": $("#inLname2").val()
+                                , "mat": $("#inMatricula2").val()
+                                , "position": $("#inPosition").val()
+                                , "action": "registerEmp"
+                               };
+                            
+                                $.ajax({
+                                    url: "data/applicationLayer.php",
+                                    type: "POST",
+                                    data: jsonData2,
+                                    success: function (jsonResponse) {
+                                        alert(jsonResponse.message + "!");
+                                        $("#RegSec").hide();
+                                        $("#LoginSec").hide();
+                                        $("#DashboardArrives").show();
+                                        $("#inFname2").val("");
+                                        $("#inLname2").val("");
+                                        $("#inMatricula2").val("");
+                                        $("#inPosition").val("");
+                                    }
+                                    , error: function (errorMessage) {
+                                        alert(errorMessage.responseText);
+                                            $("#inFname2").val("");
+                                            $("#inLname2").val("");
+                                            $("#inMatricula2").val("");
+                                            $("#inPosition").val("");
+
+                                    }
+                            });
+                        }
+                    
                 });
+
+                
             }
         });
     });
@@ -260,26 +325,45 @@ $(document).ready(function () {
             event.preventDefault();
             var jsonData = {
                 "mat": $("#RemoveEmployee").val(), 
-                //"action": "removeEmployee"
                 "action": "validateEmployee"
             };
+            
             $.ajax({
-                url: "data/applicationLayer.php"
-                , type: "POST"
-                , data: jsonData
-                , dataType: 'json'
-                , success: function (jsonResponse) {
+                url: "data/applicationLayer.php",
+                type: "POST",
+                data: jsonData,
+                dataType: 'json',
+                success: function (jsonResponse) {
                     alert(jsonResponse.message + "!");
-                    $("#RemoveEmployee").val("");
+                        
+                     var jsonData2 = {
+                            "mat": $("#RemoveEmployee").val(), 
+                            "action": "removeEmployee"
+                        };
                     
-                }
-                , error: function (errorMessage) {
-                    alert(errorMessage.responseText);
-                    $("#RemoveEmployee").val("");
-            /*         $("#RemoveEmployee").val("");
-                    $("#DashboardArrives").show();
-                    $("#RemoveSec").hide();
-                     $("#LoginSec").hide(); */
+                    $.ajax({
+                        url: "data/applicationLayer.php",
+                        type: "POST",
+                        data: jsonData2,
+                        dataType: 'json',
+                        success: function (jsonResponse) {
+                            
+                            console.log(jsonResponse.message + "!");
+
+                        },
+                        error: function(errorMessage){
+                            alert(errorMessage.responseText);
+                        }
+                            
+                        });
+                    
+                        $("#RemoveEmployee").val("");
+                    },
+                
+                    error: function(errorMessage) {
+                        alert(errorMessage.responseText);
+                        $("#RemoveEmployee").val("");
+           
                 }
             });
         });
