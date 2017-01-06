@@ -517,7 +517,8 @@ $(document).ready(function () {
                         postUser += "<tr>"
                                    // +  "<td>" + $("#comName").val() + "</td>"
                                     +  "<td>" + jsonResponse[index].mat+ "</td>"
-                                    +  "<td>" + jsonResponse[index].fName + " " + jsonResponse[index].lName + "</td></tr>";   
+                                    +  "<td>" + jsonResponse[index].fName + " " + jsonResponse[index].lName + "</td>"  
+                                    +  "<td>" + jsonResponse[index].position +"</td></tr>";   
                     });
                 
                 }

@@ -26,12 +26,6 @@ CREATE TABLE Registers (
 INSERT INTO Employee( fName, lName , matricula, position)
 VALUES ('Eva', 'Villarreal' , '1195725', 'intern' )
 
-INSERT INTO Employee( fName, lName , matricula, position)
-VALUES ('Eva', 'Villarreal' , '12', 'intern' )
-
-INSERT INTO Registers(mat, arrival, depart, dateReg)
-values ('12', '13:00:15', '13:30:15' , '2010-01-02' )
-
 INSERT INTO Registers(mat, arrival, depart, dateReg)
 values ('1195', '13:00:15', '13:30:15' , '2010-01-02' )
 

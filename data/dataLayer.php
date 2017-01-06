@@ -202,7 +202,7 @@ $conn = connectionToDataBase();
             $response = array();    
             
             while($row = $result -> fetch_assoc()) {
-                array_push($response, array("status"=>"SUCCESS", "mat" => $row["matricula"], "fName" =>$row["fName"], "lName" => $row["lName"])); 
+                array_push($response, array("status"=>"SUCCESS", "position" => $row["position"], "mat" =>$row["matricula"],                                "fName" =>$row["fName"], "lName" => $row["lName"])); 
             }
             return ($response);
         }
