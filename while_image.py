@@ -29,6 +29,9 @@ while (True):
         image = rawCapture.array
         # display the image on screen and wait for a keypress
         cv2.imshow("Image",image)
+        #img= cv2.imread('pug.jpg')
+        #cv2.imshow('image',img) shows pug img
+        cv2.waitKey(0)
         #save an image to current path
         cv2.imwrite("Snap.jpg",image)
         #clear the stream in preparation for the next frame
@@ -41,5 +44,3 @@ while (True):
     
     else:
          print ("Enter another number to take snap")
-    
-    
